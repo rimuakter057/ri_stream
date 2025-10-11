@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ri_stream/features/common_widget/custom_asset_image.dart';
 import 'package:ri_stream/features/common_widget/custom_circle_avatar.dart';
 import 'package:ri_stream/features/common_widget/custom_text_field.dart';
+import 'package:ri_stream/features/search/ui/screens/search_screen.dart';
 import 'package:ri_stream/utils/app_colors.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/utils/assets_path.dart';
@@ -36,6 +37,14 @@ class HomeScreen extends StatelessWidget {
           child: Column(children: [
             ///search bar
             CustomTextField(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const SearchScreen()), // target screen
+                );
+
+              },
+              readOnly: true,
               prefixIcon: Icons.search,
               hintText: "Search",
             ),

@@ -11,7 +11,8 @@ class CustomTextField extends StatelessWidget {
   final Function(String)? onChanged;
   final TextInputType? keyboardType;
   final bool obscureText;
-
+  final void Function()?onTap;
+final bool ?readOnly;
   const CustomTextField({
     super.key,
     this.hintText,
@@ -20,7 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.onChanged,
     this.keyboardType,
-    this.obscureText = false,
+    this.obscureText = false, this.readOnly, this.onTap,
   });
 
   @override
@@ -28,6 +29,8 @@ class CustomTextField extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return TextField(
+      onTap:onTap ,
+      readOnly:readOnly??false ,
       controller: controller,
       onChanged: onChanged,
       keyboardType: keyboardType,

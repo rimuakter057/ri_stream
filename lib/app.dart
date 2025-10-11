@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 
       theme: AppTheme.lightTheme(context),
       darkTheme: AppTheme.darkTheme(context),
-     themeMode: ThemeMode.dark,
+     themeMode: ThemeMode.light,
 
       home: const MainBottomNavScreen(),
     );
