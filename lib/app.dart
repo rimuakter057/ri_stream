@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ri_stream/theme/app_theme.dart';
 
 import 'features/home/ui/screens/home_screen.dart';
+import 'features/main_nav/main_nav_screen.dart';
 
 
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme(context),
      themeMode: ThemeMode.dark,
 
-      home: const HomeScreen(),
+      home: const MainBottomNavScreen(),
     );
   }
 }
