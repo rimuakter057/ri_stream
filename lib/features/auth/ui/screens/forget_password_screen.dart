@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ri_stream/features/auth/ui/screens/otp_verification_screen.dart';
+import 'package:ri_stream/features/auth/ui/screens/sign_up_screen.dart';
 import 'package:ri_stream/features/auth/ui/widgets/custom_divider_or.dart';
 import 'package:ri_stream/features/auth/ui/widgets/have_account_text_widget.dart';
 import 'package:ri_stream/features/common_widget/custom_asset_image.dart';
@@ -76,9 +78,26 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 height:SizeConfig.getHeight(context, 120),
               ),
 
-                Center(child: ElevatedButton(onPressed: (){}, child: Text("Continue"))),
+                Center(child: ElevatedButton(onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const
+                    OtpVerificationScreen()), // target screen
+                  );
 
+                }, child: Text("Continue"))),
+                SizedBox(height: SizeConfig.getHeight(context, 18)),
+                Center(child: HaveAccountTextWidget(
+                  firstText: "Don't have any account? ",
+                  lastText: "Sign Up",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const
+                      SignUpScreen()), // target screen
+                    );
 
+                  },)),
 
 
 

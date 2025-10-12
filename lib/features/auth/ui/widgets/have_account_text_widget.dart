@@ -7,11 +7,12 @@ class HaveAccountTextWidget extends StatelessWidget {
   const HaveAccountTextWidget({super.key, required this.onTap, this.firstText, this.lastText});
     final String? firstText;
   final String? lastText;
+  final bool signIn=false;
   @override
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        text:firstText?? "Already have an account ",
+        text:firstText?? "Already have an account? ",
         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
           color: Theme.of(context).brightness == Brightness.dark
               ? Colors.white24
@@ -21,7 +22,7 @@ class HaveAccountTextWidget extends StatelessWidget {
           TextSpan(
             text:lastText?? "Sign In",
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.white,
+
               fontWeight: FontWeight.bold,
             ),
             recognizer: TapGestureRecognizer()..onTap = onTap,

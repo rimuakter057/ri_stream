@@ -74,7 +74,7 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           fixedSize: Size(
-            250, // ✅ width
+            SizeConfig.getWidth(context, 300),  // ✅ width
             SizeConfig.getHeight(context, 52), // ✅ height
           ),
           backgroundColor:Colors.tealAccent ,

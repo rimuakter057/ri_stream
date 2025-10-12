@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ri_stream/features/auth/ui/screens/forget_password_screen.dart';
+import 'package:ri_stream/features/auth/ui/screens/sign_up_screen.dart';
 import 'package:ri_stream/features/auth/ui/widgets/custom_divider_or.dart';
 import 'package:ri_stream/features/auth/ui/widgets/have_account_text_widget.dart';
 import 'package:ri_stream/features/common_widget/custom_asset_image.dart';
@@ -45,7 +47,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       .copyWith(color: Colors.grey),
                 ),
                 SizedBox(height: SizeConfig.getHeight(context, 24)),
-                ///text field card
+
                 Card(
                   color: isDark ? Colors.white12 : Colors.teal,
                   elevation: 5,
@@ -127,7 +129,13 @@ class _SignInScreenState extends State<SignInScreen> {
           
                               // ✅ Right side
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (_) => const ForgotPasswordScreen()), // target screen
+                                  );
+                                },
                                 style: TextButton.styleFrom(
                                   padding: EdgeInsets.zero,
                                   minimumSize: Size(0, 0),
@@ -145,13 +153,27 @@ class _SignInScreenState extends State<SignInScreen> {
                             ],
                           ),
                           SizedBox(height: SizeConfig.getHeight(context, 18)),
-                      Center(child: ElevatedButton(onPressed: (){}, child: Text("Sign In"))),
+                      Center(child: ElevatedButton(onPressed: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const
+                          SignInScreen()), // target screen
+                        );
+                      }, child: Text("Sign In"))),
                           SizedBox(height: SizeConfig.getHeight(context, 18)),
 
                           Center(child: HaveAccountTextWidget(
                             firstText: "Don't have any account? ",
                             lastText: "Sign Up",
-                            onTap: () {  },)),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (_) => const
+                                SignUpScreen()), // target screen
+                              );
+
+
+                            },)),
                         ],
                       ),
                     ),
@@ -250,9 +272,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
 
                   ],
-                )
+                ),
 
-
+                SizedBox(height: SizeConfig.getHeight(context, 16)),
 
               ],
             ),
