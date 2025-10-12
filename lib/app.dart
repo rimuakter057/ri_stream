@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:ri_stream/theme/app_theme.dart';
 
+import 'features/auth/ui/screens/forget_password_screen.dart';
 import 'features/auth/ui/screens/sign_in_screen.dart';
 
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme(context),
      themeMode: ThemeMode.dark,
 
-      home: SignInScreen(),
+      home: ForgotPasswordScreen(),
     );
   }
 }
