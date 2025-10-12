@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ri_stream/features/common_widget/custom_circle_avatar.dart';
+import 'package:ri_stream/features/notification/ui/widgets/notification_list_tile_widget.dart';
 import 'package:ri_stream/utils/app_colors.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/utils/assets_path.dart';
@@ -13,6 +14,9 @@ class NotificationScreen extends StatelessWidget {
     return Scaffold(
       
       appBar: AppBar(
+        leading: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: Icon(Icons.arrow_back_ios)),
         title: Text("Notification"),
         actions: [
           IconButton(onPressed: (){}, icon: Icon(Icons.notifications_outlined))
@@ -26,31 +30,15 @@ class NotificationScreen extends StatelessWidget {
         ),
         itemCount: 10,
         itemBuilder: (context, index) {
-          return ListTile(
-            contentPadding: EdgeInsets.zero,
-            leading: CustomCircleAvatar(assetsPath: AssetsPath.logo),
-            title: Text(
-              "Rimu Akter \nHey! Are you there? Hey! Are you there? $index",
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            subtitle: Text(
-              "Hey! Are you there? Hey! Are you there? Hey! Are you there?",
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                fontSize: SizeConfig.getFont(context, 12),
-                fontWeight: FontWeight.w300,
-                color: AppColors.grey,
-              ),
-            ),
-            trailing: IconButton(onPressed: (){}, icon: Icon(Icons.delete,color: Colors.red,))
-          );
+          return  NotificationTile(userName: 'Rimu Akter', message: 'are you well??', time: DateTime.now(),);
+
+
         },
         separatorBuilder: (context, index) {
           return Divider(
             color:isDark? Colors.white12:Colors.grey.shade200,
             thickness: 1,
-            height: 16,
+            height: SizeConfig.getHeight(context, 2)
           );
         },
       ),

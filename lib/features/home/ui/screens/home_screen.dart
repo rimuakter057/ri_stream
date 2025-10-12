@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:ri_stream/features/common_widget/custom_asset_image.dart';
 import 'package:ri_stream/features/common_widget/custom_circle_avatar.dart';
 import 'package:ri_stream/features/common_widget/custom_text_field.dart';
+import 'package:ri_stream/features/notification/ui/screens/notification_screen.dart';
 import 'package:ri_stream/features/search/ui/screens/search_screen.dart';
 import 'package:ri_stream/utils/app_colors.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/utils/assets_path.dart';
+import 'package:badges/badges.dart' as badges;
 
 
 
@@ -18,15 +20,42 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: CustomAssetImage(assetsPath: AssetsPath.logo,),
-        title: Text("RiStream"),
-        actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.notifications))
-        ],
-      ),
 
-      ///body section
+
+     appBar:    AppBar(
+        leading: CustomAssetImage(assetsPath: AssetsPath.logo),
+    title: const Text("RiStream"),
+    actions: [
+
+      Padding(
+        padding: const EdgeInsets.only(right: 8.0),
+        child: badges.Badge(
+            position: badges.BadgePosition.topEnd(top: 0, end: 3),
+            showBadge: true,
+            badgeContent: const Text(
+            '3', // unread count
+            style: TextStyle(color: Colors.black, fontSize: 12),
+            ),
+            badgeStyle: const badges.BadgeStyle(
+            badgeColor: Colors.tealAccent, // badge color
+            padding: EdgeInsets.all(6),
+            ),
+            child: IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const NotificationScreen()), // target screen
+              );
+            },
+            icon: const Icon(Icons.notifications_outlined, size: 28),
+            ),
+            ),
+      ),
+    ],
+    ),
+
+
+    ///body section
 
       body: SingleChildScrollView(
         child: Padding(

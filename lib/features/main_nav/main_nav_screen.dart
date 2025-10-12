@@ -45,13 +45,14 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
             _currentIndex = 2; // Middle screen (Add Post)
           });
         },
-        backgroundColor:isDark? Colors.tealAccent:Colors.teal,
-       // backgroundColor: Colors.indigo.shade900,
-        shape: const CircleBorder(),
+        //backgroundColor:isDark? Colors.white54:Colors.teal,
+       backgroundColor: _currentIndex == 2
+              ? (isDark ? Colors.tealAccent : Colors.teal)       // Selected color
+              : (isDark ? Colors.white54 : Colors.grey.shade300),   shape: const CircleBorder(),
         child: Icon(
           Icons.add,
-          size: SizeConfig.getFont(context, 28),
-          color: isDark?Colors.black:Colors.white,
+          size: SizeConfig.getFont(context, 42),
+          color:Colors.black,
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
