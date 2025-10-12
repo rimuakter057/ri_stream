@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ri_stream/features/common_widget/custom_text_field.dart';
 import 'package:ri_stream/utils/app_colors.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 
@@ -46,35 +47,29 @@ class _SearchScreenState extends State<SearchScreen> {
               color: iconColor, size: SizeConfig.getFont(context, 24)),
           onPressed: () => Navigator.pop(context),
         ),
-        title: TextField(
-          controller: _controller,
-          focusNode: _focusNode,
-          autofocus: true,
-          style: GoogleFonts.inter(
-            fontSize: SizeConfig.getFont(context, 16),
-            color: textColor,
-          ),
-          decoration: InputDecoration(
-            hintText: "Search...",
-            hintStyle: GoogleFonts.inter(
-              fontSize: SizeConfig.getFont(context, 14),
-              color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide.none,
-            ),
-            filled: true,
-            fillColor: isDark ? Colors.grey.shade900 : Colors.grey.shade200,
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.getWidth(context, 12),
-              vertical: SizeConfig.getHeight(context, 8),
-            ),
-            prefixIcon: Icon(Icons.search,
-                color: iconColor, size: SizeConfig.getFont(context, 24)),
-          ),
+
+        title: SizedBox(
+          height: 42,
+          child: CustomTextField(
+            focusNode: _focusNode,
+            prefixIcon: Icons.search,
+            hintText: "Search",),
         ),
+
       ),
+
+
+
+
+
+
+
+
+
+
+
+
+
       body: Center(
         child: Text(
           "Search results will appear here",

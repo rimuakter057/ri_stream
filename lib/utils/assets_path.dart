@@ -2,11 +2,18 @@
 class AssetsPath {
   // 🖼️ Images
   static const String logo = 'assets/icons/logo.png';
-  static const String userAvatar = 'assets/images/user_avatar.png';
-  static const String splashBg = 'assets/images/splash_bg.jpg';
+  static const String googleIcon = 'assets/icons/google_icon.png';
+  static const String facebookIcon = 'assets/icons/facebook_icon.png';
 
-  // 🧭 Icons
-  static const String homeIcon = 'assets/icons/home.png';
+
+  static const String appleIcon = 'assets/icons/apple_icon.png';
+
+
+
+
+
+
+
   static const String searchIcon = 'assets/icons/search.png';
   static const String addIcon = 'assets/icons/add.png';
   static const String messageIcon = 'assets/icons/message.png';

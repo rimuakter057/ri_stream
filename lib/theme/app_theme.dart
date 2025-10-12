@@ -36,18 +36,18 @@ class AppTheme {
           headlineLarge: GoogleFonts.inter(
             fontSize: SizeConfig.getFont(context, 32),
             color: Colors.black,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.w600,
           ),
 
           headlineMedium: GoogleFonts.inter(
             fontSize: SizeConfig.getFont(context, 28),
             color: Colors.black,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.w600,
           ),
 
 
           headlineSmall: GoogleFonts.inter(
-            fontSize: SizeConfig.getFont(context, 24),
+            fontSize: SizeConfig.getFont(context, 18),
             color: Colors.black,
             fontWeight: FontWeight.normal,
           ),
@@ -73,33 +73,44 @@ class AppTheme {
 
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          fixedSize: Size(
+            250, // ✅ width
+            SizeConfig.getHeight(context, 52), // ✅ height
+          ),
+          backgroundColor:Colors.tealAccent ,
+          foregroundColor: Colors.black,
           padding: EdgeInsets.symmetric(
             horizontal: SizeConfig.getPadding(context, 20),
             vertical: SizeConfig.getPadding(context, 12),
           ),
-          textStyle: TextStyle(
-            fontSize: SizeConfig.getFont(context, 16),
+          textStyle: GoogleFonts.inter(
+            letterSpacing: 0.5,
+            fontSize: SizeConfig.getFont(context, 24),
             fontWeight: FontWeight.w600,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 8)),
+            borderRadius: BorderRadius.circular(32),
           ),
         ),
       ),
+
+
+
+
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: EdgeInsets.symmetric(
           horizontal: SizeConfig.getPadding(context, 16),
           vertical: SizeConfig.getPadding(context, 12),
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 24)),
+          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 12)),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 24)),
+          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 12)),
           borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 24)),
+          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 12)),
           borderSide: BorderSide.none,
         ),
       ),
@@ -141,56 +152,62 @@ class AppTheme {
 
     /// text theme
       textTheme: TextTheme(
-        headlineLarge: GoogleFonts.inter(
+        headlineLarge: GoogleFonts.poppins(
           fontSize: SizeConfig.getFont(context, 32),
           color: Colors.white,
-          fontWeight: FontWeight.normal,
+          fontWeight: FontWeight.w600,
         ),
 
-        headlineMedium: GoogleFonts.inter(
+        headlineMedium: GoogleFonts.poppins(
           fontSize: SizeConfig.getFont(context, 28),
           color: Colors.white,
-          fontWeight: FontWeight.normal,
+          fontWeight: FontWeight.w600,
         ),
 
 
-        headlineSmall: GoogleFonts.inter(
+        headlineSmall: GoogleFonts.poppins(
           fontSize: SizeConfig.getFont(context, 24),
           color: Colors.white,
           fontWeight: FontWeight.normal,
         ),
 
 
-        bodyMedium: TextStyle(
+        bodyMedium: GoogleFonts.inter(
           fontSize: SizeConfig.getFont(context, 16),
           fontWeight: FontWeight.w600,
           color: AppColors.white,
         ),
-        bodySmall: TextStyle(
+        bodySmall: GoogleFonts.inter(
           fontSize: SizeConfig.getFont(context, 14),
           fontWeight: FontWeight.w400,
           color: Colors.white,
         ),
-        bodyLarge: TextStyle(
+        bodyLarge: GoogleFonts.inter(
           fontSize: SizeConfig.getFont(context, 20),
           fontWeight: FontWeight.bold,
           color: Colors.white,
         ),
       ),
 
-
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          fixedSize: Size(
+            250, // ✅ width
+            SizeConfig.getHeight(context, 52), // ✅ height
+          ),
+          backgroundColor:Colors.white12 ,
+          foregroundColor: Colors.white,
           padding: EdgeInsets.symmetric(
             horizontal: SizeConfig.getPadding(context, 20),
             vertical: SizeConfig.getPadding(context, 12),
           ),
-          textStyle: TextStyle(
-            fontSize: SizeConfig.getFont(context, 16),
+          textStyle: GoogleFonts.inter(
+            letterSpacing: 0.5,
+            fontSize: SizeConfig.getFont(context, 24),
             fontWeight: FontWeight.w600,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 8)),
+            borderRadius: BorderRadius.circular(32),
           ),
         ),
       ),
@@ -202,14 +219,14 @@ class AppTheme {
           vertical: SizeConfig.getPadding(context, 12),
         ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 24)),
+          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 12)),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 24)),
+          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 12)),
           borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 24)),
+          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 12)),
           borderSide: BorderSide.none,
         ),
       ),

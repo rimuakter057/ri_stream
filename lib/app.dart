@@ -2,8 +2,8 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:ri_stream/theme/app_theme.dart';
 
-import 'features/home/ui/screens/home_screen.dart';
-import 'features/main_nav/main_nav_screen.dart';
+import 'features/auth/ui/screens/sign_in_screen.dart';
+
 
 
 
@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
 
       theme: AppTheme.lightTheme(context),
       darkTheme: AppTheme.darkTheme(context),
-     themeMode: ThemeMode.light,
+     themeMode: ThemeMode.dark,
 
-      home: const MainBottomNavScreen(),
+      home: SignInScreen(),
     );
   }
 }

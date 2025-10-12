@@ -29,7 +29,7 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    Color selectedColor = Colors.purpleAccent;
+    Color selectedColor =isDark? Colors.tealAccent:Colors.teal;
     Color unselectedColor = isDark ? Colors.grey.shade400 : Colors.grey.shade600;
     Color bottomBarBg = isDark ? Colors.black : Colors.white;
 
@@ -45,7 +45,7 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
             _currentIndex = 2; // Middle screen (Add Post)
           });
         },
-        backgroundColor: Colors.purpleAccent,
+        backgroundColor:isDark? Colors.tealAccent:Colors.teal,
        // backgroundColor: Colors.indigo.shade900,
         shape: const CircleBorder(),
         child: Icon(
