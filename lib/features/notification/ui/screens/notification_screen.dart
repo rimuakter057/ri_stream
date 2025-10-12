@@ -5,14 +5,19 @@ import 'package:ri_stream/utils/app_colors.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/utils/assets_path.dart';
 
-class NotificationScreen extends StatelessWidget {
+class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
 
+  @override
+  State<NotificationScreen> createState() => _NotificationScreenState();
+}
+
+class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      
+
       appBar: AppBar(
         leading: IconButton(onPressed: (){
           Navigator.pop(context);
@@ -22,7 +27,7 @@ class NotificationScreen extends StatelessWidget {
           IconButton(onPressed: (){}, icon: Icon(Icons.notifications_outlined))
         ],
       ),
-      
+
       body: ListView.separated(
         padding: EdgeInsets.symmetric(
           vertical: 10,

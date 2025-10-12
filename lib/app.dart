@@ -10,6 +10,7 @@ import 'features/auth/ui/screens/reset_password_screen.dart';
 import 'features/auth/ui/screens/sign_in_screen.dart';
 import 'features/auth/ui/screens/sign_up_screen.dart';
 import 'features/notification/ui/screens/notification_screen.dart';
+import 'features/profile/ui/screens/profile_screen.dart';
 
 
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme(context),
      themeMode: ThemeMode.light,
 
-      home: MainBottomNavScreen(),
+      home: ProfileScreen(),
     );
   }
 }

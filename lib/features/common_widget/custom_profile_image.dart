@@ -38,7 +38,7 @@ class CustomProfileImage extends StatelessWidget {
                   backgroundColor: Colors.tealAccent,
                   shape:CircleBorder(),
                 ),
-                icon: Icon(Icons.add))
+                icon: Icon(Icons.add,color: Colors.black,size: 24,))
 
 
 

@@ -14,9 +14,14 @@ import 'package:badges/badges.dart' as badges;
 
 
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +101,7 @@ class HomeScreen extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         style:Theme.of(context).textTheme.bodyMedium,
-                         )
+                         ),
 
 
                     ],),

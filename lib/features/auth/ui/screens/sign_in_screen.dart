@@ -5,6 +5,7 @@ import 'package:ri_stream/features/auth/ui/widgets/custom_divider_or.dart';
 import 'package:ri_stream/features/auth/ui/widgets/have_account_text_widget.dart';
 import 'package:ri_stream/features/common_widget/custom_asset_image.dart';
 import 'package:ri_stream/features/common_widget/custom_text_field.dart';
+import 'package:ri_stream/features/main_nav/main_nav_screen.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/utils/assets_path.dart';
 
@@ -157,7 +158,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (_) => const
-                          SignInScreen()), // target screen
+                          MainBottomNavScreen()), // target screen
                         );
                       }, child: Text("Sign In"))),
                           SizedBox(height: SizeConfig.getHeight(context, 18)),
