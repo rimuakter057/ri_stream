@@ -49,24 +49,24 @@ class AppTheme {
           headlineSmall: GoogleFonts.inter(
             fontSize: SizeConfig.getFont(context, 18),
             color: Colors.black,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.w600,
           ),
 
 
           bodyLarge: GoogleFonts.inter(
             fontSize: SizeConfig.getFont(context, 24),
             color: Colors.black,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.bold,
           ),
           bodyMedium: GoogleFonts.inter(
             fontSize: SizeConfig.getFont(context, 16),
             color: Colors.black,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.w600,
           ),
           bodySmall: GoogleFonts.inter(
             fontSize: SizeConfig.getFont(context, 14),
             color: Colors.black,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w400,
           ),
         ),
 

@@ -7,6 +7,7 @@ class AssetsPath {
 
 
   static const String appleIcon = 'assets/icons/apple_icon.png';
+  static const String image1 = 'assets/images/image1.png';
 
 
 
@@ -14,7 +15,6 @@ class AssetsPath {
 
 
 
-  static const String searchIcon = 'assets/icons/search.png';
   static const String addIcon = 'assets/icons/add.png';
   static const String messageIcon = 'assets/icons/message.png';
   static const String profileIcon = 'assets/icons/profile.png';

@@ -21,8 +21,8 @@ class CircularIconCircleWidget extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return SizedBox(
-      height: height ?? SizeConfig.getHeight(context, 72),
-      width: width ?? SizeConfig.getWidth(context, 72),
+      height: height ?? SizeConfig.getHeight(context, 50),
+      width: width ?? SizeConfig.getWidth(context, 50),
       child: IconButton(
         onPressed: onTap ?? () {},
         icon: Icon(
