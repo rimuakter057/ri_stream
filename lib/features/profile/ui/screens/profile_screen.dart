@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ri_stream/features/common_widget/circular_icon_widget.dart';
 import 'package:ri_stream/features/common_widget/custom_container.dart';
 import 'package:ri_stream/features/common_widget/custom_profile_image.dart';
+import 'package:ri_stream/features/profile/ui/screens/about_user_screen.dart';
 import 'package:ri_stream/features/profile/ui/widgets/recent_post_card_widget.dart';
 import 'package:ri_stream/features/profile/ui/widgets/stat_column_widgets.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
@@ -42,20 +43,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   SizedBox(height: SizeConfig.getHeight(context, 4)),
                   Text(
-                    "Rimu Akter subtitle",
+                    "category",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
               ),
-              SizedBox(height: SizeConfig.getHeight(context, 16)),
+              SizedBox(height: SizeConfig.getHeight(context, 12)),
+              ///bio text
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
               Text(
-                "I am always active for your chat",
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodyMedium,
+               "Intro: ",
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w300,fontSize: 18),
               ),
+              SizedBox(width: 4),
+              Expanded(
+                child:  Text(
+                  "I am always active for your chat I am always active for your chat",
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ),
+            ],
+          ),
+
+
+
               SizedBox(height: SizeConfig.getHeight(context, 24)),
               ///share flow show screen
               Row(
@@ -89,15 +106,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],),
               SizedBox(height: SizeConfig.getHeight(context, 24)),
               ///about me text
-              CustomContainer(
-                borderRadius: 24,
-                padding: EdgeInsets.symmetric(horizontal: SizeConfig.getWidth(context, 48),vertical:SizeConfig.getHeight(context, 12) ),
-                color: isDark?Colors.white12:Colors.teal,
-                child: Text(
-                  "About Me",
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white,fontWeight: FontWeight.w800),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AboutUserScreen(),
+                    ),
+                  );
+                },
+                child: CustomContainer(
+                  borderRadius: 24,
+                  padding: EdgeInsets.symmetric(horizontal: SizeConfig.getWidth(context, 48),vertical:SizeConfig.getHeight(context, 8) ),
+                  color: isDark?Colors.white12:Colors.teal,
+                  child: Text(
+                    "About Me",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white,fontWeight: FontWeight.w800),
+                  ),
                 ),
               ),
               SizedBox(height: SizeConfig.getHeight(context, 16)),

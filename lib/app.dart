@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:ri_stream/features/profile/ui/screens/profile_screen.dart';
 import 'package:ri_stream/theme/app_theme.dart';
 import 'features/profile/ui/screens/about_user_screen.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme(context),
       darkTheme: AppTheme.darkTheme(context),
       themeMode: ThemeMode.dark,
-      home: AboutUserScreen(),
+      home: ProfileScreen(),
     );
   }
 }
