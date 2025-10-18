@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ri_stream/features/live/ui/screens/live_video_screen.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/features/home/ui/screens/home_screen.dart';
 import 'package:ri_stream/features/notification/ui/screens/notification_screen.dart';
@@ -19,7 +20,7 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    const SearchScreen(),
+    const LiveVideoScreen(),
     const AddPostScreen(), // Middle FAB
     const NotificationScreen(),
     const ProfileScreen(),
@@ -29,7 +30,7 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    Color selectedColor =isDark? Colors.tealAccent:Colors.teal;
+    Color selectedColor =isDark? Colors.red.shade900:Colors.red.shade900;
     Color unselectedColor = isDark ? Colors.grey.shade400 : Colors.grey.shade600;
     Color bottomBarBg = isDark ? Colors.black : Colors.white;
 
@@ -47,7 +48,7 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
         },
         //backgroundColor:isDark? Colors.white54:Colors.teal,
        backgroundColor: _currentIndex == 2
-              ? (isDark ? Colors.tealAccent : Colors.teal)       // Selected color
+              ? (isDark ? Colors.red.shade900 : Colors.red.shade900)       // Selected color
               : (isDark ? Colors.white54 : Colors.grey.shade300),   shape: const CircleBorder(),
         child: Icon(
           Icons.add,
@@ -69,7 +70,7 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
             children: [
               // Left 2 items
               _buildNavItem(Icons.home, "Home", 0, selectedColor, unselectedColor),
-              _buildNavItem(Icons.search, "Search", 1, selectedColor, unselectedColor),
+              _buildNavItem(Icons.live_tv, "live", 1, selectedColor, unselectedColor),
 
               SizedBox(width: SizeConfig.getWidth(context, 48)), // Space for FAB
 

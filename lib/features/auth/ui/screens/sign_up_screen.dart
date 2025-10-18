@@ -50,7 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(height: SizeConfig.getHeight(context, 24)),
                 ///text field card
                 Card(
-                  color: isDark ? Colors.white12 : Colors.teal,
+                  color: isDark ? Colors.white12 : Colors.red.shade50,
                   elevation: 5,
                   child: SingleChildScrollView(
                     child: Padding(
@@ -181,91 +181,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
 
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24), // ✅ radius 24
-                      ),
-                      color: isDark ? Colors.white12 : Colors.teal,
-                      elevation: 5,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16), // ✅ increased vertical padding
-                        child: Row(
-                          children: [
-                            ClipOval(
-                              child: CustomAssetImage(
-                                assetsPath: AssetsPath.googleIcon,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Text(
-                              "Continue with Google",
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    LoginOptionWidget(assetIcon: AssetsPath.googleIcon, text:    "Continue with Google", onTap: (){},),
                     SizedBox(height: SizeConfig.getHeight(context, 8)),
-
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      color: isDark ? Colors.white12 : Colors.teal,
-                      elevation: 5,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-                        child: Row(
-                          children: [
-                            ClipOval(
-                              child: CustomAssetImage(
-                                assetsPath: AssetsPath.facebookIcon,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Text(
-                              "Continue with Facebook",
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    LoginOptionWidget(assetIcon: AssetsPath.facebookIcon, text:    "Continue with Facebook", onTap: (){},),
                     SizedBox(height: SizeConfig.getHeight(context, 8)),
+                    LoginOptionWidget(assetIcon: AssetsPath.appleIcon, text:    "Continue with Apple", onTap: (){},)
 
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      color: isDark ? Colors.white12 : Colors.teal,
-                      elevation: 5,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-                        child: Row(
-                          children: [
-                            ClipOval(
-                              child: CustomAssetImage(
-                                assetsPath: AssetsPath.appleIcon,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Text(
-                              "Continue with Apple",
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: SizeConfig.getHeight(context, 16)),
                   ],
-                )
+                ),
 
 
 

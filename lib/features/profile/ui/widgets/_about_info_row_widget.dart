@@ -15,14 +15,13 @@ class AboutInfoRow extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w300,fontSize: 18),
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w600),
         ),
         SizedBox(width: 4),
         Expanded(
           child: Text(
             text,
-            style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w200,fontSize: 18),
-          ),
+            style: Theme.of(context).textTheme.bodyMedium, ),
         ),
       ],
     );

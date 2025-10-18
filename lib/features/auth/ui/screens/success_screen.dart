@@ -27,9 +27,9 @@ class _SuccessScreenState extends State<SuccessScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.tealAccent, Colors.teal],
+            colors: [Colors.red, Colors.red.shade900],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),

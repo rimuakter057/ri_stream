@@ -50,7 +50,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 SizedBox(height: SizeConfig.getHeight(context, 24)),
 
                 Card(
-                  color: isDark ? Colors.white12 : Colors.teal,
+                  color: isDark ? Colors.white12 : Colors.red.shade50,
                   elevation: 5,
                   child: SingleChildScrollView(
                     child: Padding(
@@ -106,12 +106,12 @@ class _SignInScreenState extends State<SignInScreen> {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(4),
                                       ),
-                                      side: const BorderSide(color: Colors.tealAccent, width: 2), // ✅ border tealAccent
+                                      side:  BorderSide(color: Colors.red.shade900, width: 2), // ✅ border tealAccent
                                       checkColor: Colors.black, // ✅ tick color
                                       fillColor: WidgetStateProperty.resolveWith(
                                             (states) {
                                           if (states.contains(WidgetState.selected)) {
-                                            return Colors.tealAccent; // ✅ সবসময় tealAccent
+                                            return Colors.red.shade900; // ✅ সবসময় tealAccent
                                           }
                                           return Colors.transparent; // unchecked হলে transparent
                                         },
@@ -145,9 +145,11 @@ class _SignInScreenState extends State<SignInScreen> {
                                 child: Text(
                                   "Forget Password?",
                                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: Colors.tealAccent ,
+                                    color: Colors.red.shade900 ,
                                     fontWeight: FontWeight.w600,
                                     decoration: TextDecoration.underline,
+
+
                                   ),
                                 ),
                               ),
@@ -189,88 +191,11 @@ class _SignInScreenState extends State<SignInScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
 
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24), // ✅ radius 24
-                      ),
-                      color: isDark ? Colors.white12 : Colors.teal,
-                      elevation: 5,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16), // ✅ increased vertical padding
-                        child: Row(
-                          children: [
-                            ClipOval(
-                              child: CustomAssetImage(
-                                assetsPath: AssetsPath.googleIcon,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Text(
-                              "Continue with Google",
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    LoginOptionWidget(assetIcon: AssetsPath.googleIcon, text:    "Continue with Google", onTap: (){},),
                     SizedBox(height: SizeConfig.getHeight(context, 8)),
-
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      color: isDark ? Colors.white12 : Colors.teal,
-                      elevation: 5,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-                        child: Row(
-                          children: [
-                            ClipOval(
-                              child: CustomAssetImage(
-                                assetsPath: AssetsPath.facebookIcon,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Text(
-                              "Continue with Facebook",
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    LoginOptionWidget(assetIcon: AssetsPath.facebookIcon, text:    "Continue with Facebook", onTap: (){},),
                     SizedBox(height: SizeConfig.getHeight(context, 8)),
-
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      color: isDark ? Colors.white12 : Colors.teal,
-                      elevation: 5,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-                        child: Row(
-                          children: [
-                            ClipOval(
-                              child: CustomAssetImage(
-                                assetsPath: AssetsPath.appleIcon,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Text(
-                              "Continue with Apple",
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    LoginOptionWidget(assetIcon: AssetsPath.appleIcon, text:    "Continue with Apple", onTap: (){},)
 
                   ],
                 ),
@@ -279,6 +204,50 @@ class _SignInScreenState extends State<SignInScreen> {
 
               ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LoginOptionWidget extends StatelessWidget {
+  const LoginOptionWidget({
+    super.key, required this.assetIcon, required this.text, required this.onTap,
+
+  });
+
+final String assetIcon;
+final String text;
+final void Function() onTap;
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24), // ✅ radius 24
+        ),
+        color: isDark ? Colors.white12 : Colors.red.shade50,
+        elevation: 5,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16), // ✅ increased vertical padding
+          child: Row(
+            children: [
+              ClipOval(
+                child: CustomAssetImage(
+                  assetsPath: assetIcon,
+                ),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                text,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ],
           ),
         ),
       ),

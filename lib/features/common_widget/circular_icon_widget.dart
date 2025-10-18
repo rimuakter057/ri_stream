@@ -35,7 +35,7 @@ class CircularIconCircleWidget extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),
           ),
-          backgroundColor: isDark ? Colors.grey[900] : Colors.teal,
+          backgroundColor: isDark ? Colors.grey[900] : Colors.red.shade900,
           elevation: 4,
           shadowColor: Colors.white12,
         ),

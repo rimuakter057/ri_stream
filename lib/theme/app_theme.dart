@@ -54,7 +54,7 @@ class AppTheme {
 
 
           bodyLarge: GoogleFonts.roboto(
-            fontSize: SizeConfig.getFont(context, 24),
+            fontSize: SizeConfig.getFont(context, 20),
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
@@ -66,7 +66,7 @@ class AppTheme {
           bodySmall: GoogleFonts.roboto(
             fontSize: SizeConfig.getFont(context, 14),
             color: Colors.black,
-            fontWeight: FontWeight.w100,
+            fontWeight: FontWeight.w400,
           ),
         ),
 
@@ -77,7 +77,7 @@ class AppTheme {
             SizeConfig.getWidth(context, 300),  // ✅ width
             SizeConfig.getHeight(context, 52), // ✅ height
           ),
-          backgroundColor:Colors.tealAccent ,
+          backgroundColor:Colors.red.shade900 ,
           foregroundColor: Colors.black,
           padding: EdgeInsets.symmetric(
             horizontal: SizeConfig.getPadding(context, 20),
@@ -166,15 +166,20 @@ class AppTheme {
 
 
         headlineSmall: GoogleFonts.poppins(
-          fontSize: SizeConfig.getFont(context, 24),
+          fontSize: SizeConfig.getFont(context, 18),
           color: Colors.white,
           fontWeight: FontWeight.normal,
+        ),
+        bodyLarge: GoogleFonts.inter(
+          fontSize: SizeConfig.getFont(context, 20),
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
         ),
 
 
         bodyMedium: GoogleFonts.inter(
           fontSize: SizeConfig.getFont(context, 16),
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w400,
           color: AppColors.white,
         ),
         bodySmall: GoogleFonts.inter(
@@ -182,11 +187,7 @@ class AppTheme {
           fontWeight: FontWeight.w400,
           color: Colors.white,
         ),
-        bodyLarge: GoogleFonts.inter(
-          fontSize: SizeConfig.getFont(context, 20),
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
+
       ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(

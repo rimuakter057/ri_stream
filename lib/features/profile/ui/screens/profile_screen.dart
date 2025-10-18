@@ -46,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     "category",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w300,fontSize: 12),
                   ),
                 ],
               ),
@@ -65,7 +65,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   "I am always active for your chat I am always active for your chat",
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w300,fontSize: 12),
                 ),
               ),
             ],
@@ -83,7 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   CustomContainer(
                     borderRadius: 24,
                    padding: EdgeInsets.symmetric(horizontal: SizeConfig.getWidth(context, 24),vertical:SizeConfig.getHeight(context, 6) ),
-                      color: isDark?Colors.white12:Colors.teal,
+                      color: isDark?Colors.white12:Colors.red.shade900,
                     child: Text(
                       "Follow",
                       maxLines: 1,
@@ -118,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: CustomContainer(
                   borderRadius: 24,
                   padding: EdgeInsets.symmetric(horizontal: SizeConfig.getWidth(context, 48),vertical:SizeConfig.getHeight(context, 8) ),
-                  color: isDark?Colors.white12:Colors.teal,
+                  color: isDark?Colors.white12:Colors.red.shade900,
                   child: Text(
                     "About Me",
                     maxLines: 1,

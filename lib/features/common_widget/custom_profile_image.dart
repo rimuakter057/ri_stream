@@ -35,7 +35,7 @@ class CustomProfileImage extends StatelessWidget {
             onTap: onTap,
             child: IconButton(onPressed: (){},
                 style: IconButton.styleFrom(
-                  backgroundColor: Colors.tealAccent,
+                  backgroundColor: Colors.red.shade900,
                   shape:CircleBorder(),
                 ),
                 icon: Icon(Icons.add,color: Colors.black,size: 24,))

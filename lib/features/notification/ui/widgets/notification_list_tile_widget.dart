@@ -31,7 +31,7 @@ class NotificationTile extends StatelessWidget {
       decoration: BoxDecoration(
         color: isRead
             ? (isDark ? Colors.white12 : Colors.grey[200])
-            : (isDark ? Colors.white24 : Colors.teal.withOpacity(0.1)),
+            : (isDark ? Colors.white24 : Colors.white24),
         borderRadius: BorderRadius.circular(18),
       ),
       child: Row(
@@ -61,7 +61,7 @@ class NotificationTile extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     fontSize: SizeConfig.getFont(context, 12),
-                    color: AppColors.grey,
+
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -69,7 +69,7 @@ class NotificationTile extends StatelessWidget {
                   "${time.hour}:${time.minute.toString().padLeft(2, '0')}",
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     fontSize: SizeConfig.getFont(context, 10),
-                    color: AppColors.grey,
+
                   ),
                 ),
               ],
@@ -88,7 +88,7 @@ class NotificationTile extends StatelessWidget {
                 onTap: () {},
                 child: Icon(
                   isRead ? Icons.check : Icons.check_circle_outline,
-                  color: isRead ? Colors.grey : Colors.teal,
+                  color: isRead ? Colors.grey : Colors.red.shade900,
                   size: SizeConfig.getWidth(context, 24),
                 ),
               ),
