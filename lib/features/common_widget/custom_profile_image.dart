@@ -6,11 +6,11 @@ import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/utils/assets_path.dart';
 
 class CustomProfileImage extends StatelessWidget {
-  const CustomProfileImage({super.key, this.onTap, this.iconPath});
+  const CustomProfileImage({super.key, this.onTap, this.iconPath, this.icon});
 
   final void Function()? onTap;
   final String? iconPath;
-
+final IconData?icon;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -38,26 +38,8 @@ class CustomProfileImage extends StatelessWidget {
                   backgroundColor: Colors.red.shade900,
                   shape:CircleBorder(),
                 ),
-                icon: Icon(Icons.add,color: Colors.black,size: 24,))
+                icon: Icon(icon??Icons.add,color: Colors.white,size: 24,))
 
-
-
-
-
-
-
-
-            // Container(
-            //   padding: EdgeInsets.all(8),
-            //   height: SizeConfig.getHeight(context, 32),
-            //   width: SizeConfig.getWidth(context, 32),
-            //   decoration: const BoxDecoration(
-            //     color: Colors.tealAccent,
-            //     shape: BoxShape.circle,
-            //   ),
-            //   child: Center(child: IconButton(onPressed: (){}, icon: Icon(Icons.add))
-            //   )
-            // ),
           ),
         ),
       ],

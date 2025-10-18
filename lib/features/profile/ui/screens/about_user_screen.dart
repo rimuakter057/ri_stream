@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ri_stream/features/common_widget/custom_profile_image.dart';
 import 'package:ri_stream/features/profile/data/recent_post_card_item.dart';
 import 'package:ri_stream/features/profile/data/saved_section_item.dart';
+import 'package:ri_stream/features/profile/ui/screens/edit_profile_screen.dart';
 import 'package:ri_stream/features/profile/ui/widgets/recent_post_card_widget.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/utils/assets_path.dart';
@@ -26,6 +27,17 @@ class _AboutUserScreenState extends State<AboutUserScreen> {
             },
             icon: Icon(Icons.arrow_back_ios)),
         title: Text("About Me"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const
+                  EditProfileScreen()), // target screen
+                );
+              },
+              icon: Icon(Icons.edit)),
+        ],
       ),
       body: DefaultTabController(
         length: 3, // Number of tabs
@@ -107,7 +119,6 @@ class _AboutUserScreenState extends State<AboutUserScreen> {
 
                   ),
                   itemBuilder: (context, index) {
-                    final post = recentPostcardItem[index];
                     return Container(
                       height: 100,
                             decoration: BoxDecoration(
@@ -227,9 +238,13 @@ class _AboutUserScreenState extends State<AboutUserScreen> {
         SizedBox(height: SizeConfig.getHeight(context, 2)),
         AboutInfoRow(title: 'User Name: ', text: '@rimuakter'),
         SizedBox(height: SizeConfig.getHeight(context, 2)),
-        AboutInfoRow(title: 'Location: ', text: 'Dhaka, Bangladesh'),
+        AboutInfoRow(title: 'Email: ', text: 'mail@gmail.com'),
+        SizedBox(height: SizeConfig.getHeight(context, 2)),
+        AboutInfoRow(title: 'Birth Date: ', text: '08/12/2005'),
         SizedBox(height: SizeConfig.getHeight(context, 2)),
         AboutInfoRow(title: 'Gender: ', text: 'Female'),
+        SizedBox(height: SizeConfig.getHeight(context, 2)),
+        AboutInfoRow(title: 'Location: ', text: 'Dhaka, Bangladesh'),
         SizedBox(height: SizeConfig.getHeight(context, 2)),
         AboutInfoRow(title: 'Social Link: ', text: 'https://'),
       ],

@@ -144,13 +144,13 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                                 child: Text(
                                   "Forget Password?",
-                                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: Colors.red.shade900 ,
-                                    fontWeight: FontWeight.w600,
-                                    decoration: TextDecoration.underline,
-
-
-                                  ),
+                                  style: TextStyle(
+                                      color: Colors.red.shade900 ,
+                                      fontWeight: FontWeight.w600,
+                                      decoration: TextDecoration.underline,
+                                      decorationColor: Colors.black,
+                                     decorationThickness: 2
+                                  )
                                 ),
                               ),
                             ],

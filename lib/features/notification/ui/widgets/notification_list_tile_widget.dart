@@ -31,7 +31,7 @@ class NotificationTile extends StatelessWidget {
       decoration: BoxDecoration(
         color: isRead
             ? (isDark ? Colors.white12 : Colors.grey[200])
-            : (isDark ? Colors.white24 : Colors.white24),
+            : (isDark ? Colors.black12 : Colors.white24),
         borderRadius: BorderRadius.circular(18),
       ),
       child: Row(

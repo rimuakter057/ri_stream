@@ -9,14 +9,14 @@ import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/utils/assets_path.dart';
 import 'package:badges/badges.dart' as badges;
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class MessageScreen extends StatefulWidget {
+  const MessageScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MessageScreen> createState() => _MessageScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MessageScreenState extends State<MessageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,8 +113,8 @@ class _HomeScreenState extends State<HomeScreen> {
               /// vertically profile pic
               ListView.builder(
                 physics:
-                    NeverScrollableScrollPhysics(), // scroll conflict avoid
-                shrinkWrap: true, // SingleChildScrollView এর ভিতরে use করতে হবে
+                    NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
                 itemCount: 20,
                 itemBuilder: (context, index) {
                   return ListTile(
@@ -128,7 +128,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     subtitle: Text(
                       maxLines: 1,
-
                       "Hey! Are you there?Hey! Are you there?Hey! Are you there?Hey! Are you there?Hey! Are you there?", // Subtitle message preview
                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         fontSize: SizeConfig.getFont(context, 12),
@@ -138,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     trailing: Row(
                       mainAxisSize: MainAxisSize
-                          .min, // Important! না হলে পুরো row spread হবে
+                          .min,
                       children: [
                         Text(
                           "2:45 PM", // message time
@@ -153,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Icon(
                           Icons.check, // delivery status
                           size: SizeConfig.getFont(context, 14),
-                          color: Colors.blue, // delivered/read color
+                          color: Colors.blue,
                         ),
                       ],
                     ),

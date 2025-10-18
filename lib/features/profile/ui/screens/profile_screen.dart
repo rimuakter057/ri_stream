@@ -23,6 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
+
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 16, right: 16, top: 64),
@@ -135,7 +136,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                     "Recent Posts",
 
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   SizedBox(),
                 ],

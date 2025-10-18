@@ -11,8 +11,10 @@ class CustomTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool obscureText;
   final VoidCallback? onTap;
-  final bool? readOnly;
-  final FocusNode? focusNode; // ✅ optional focus node
+  final bool readOnly;
+  final FocusNode? focusNode;
+  final int? maxLine;
+  final int? minLine; // ✅ added minLine support
 
   const CustomTextField({
     super.key,
@@ -23,9 +25,11 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.keyboardType,
     this.obscureText = false,
-    this.readOnly,
     this.onTap,
-    this.focusNode, // ✅ added
+    this.readOnly = false,
+    this.focusNode,
+    this.maxLine,
+    this.minLine, // optional
   });
 
   @override
@@ -33,15 +37,17 @@ class CustomTextField extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return TextField(
-      focusNode: focusNode, // ✅ use it here
-      onTap: onTap,
-      readOnly: readOnly ?? false,
       controller: controller,
       onChanged: onChanged,
       keyboardType: keyboardType,
+      focusNode: focusNode,
+      onTap: onTap,
+      readOnly: readOnly,
       obscureText: obscureText,
+      minLines: obscureText ? 1 : (minLine ?? 1),         // 🔹 initial height
+      maxLines: obscureText ? 1 : (maxLine ?? 5),         // 🔹 auto-grow limit
       style: GoogleFonts.inter(
-        color: Theme.of(context).textTheme.bodyMedium!.color,
+        color: Theme.of(context).textTheme.bodyMedium?.color,
         fontSize: SizeConfig.getFont(context, 16),
       ),
       decoration: InputDecoration(
@@ -54,25 +60,26 @@ class CustomTextField extends StatelessWidget {
             ? Icon(
           prefixIcon,
           color: Colors.grey,
-          size: SizeConfig.getFont(context, 24),
+          size: SizeConfig.getFont(context, 22),
         )
             : null,
         suffixIcon: suffixIcon != null
             ? Icon(
           suffixIcon,
           color: Theme.of(context).iconTheme.color,
-          size: SizeConfig.getFont(context, 24),
+          size: SizeConfig.getFont(context, 22),
         )
             : null,
         filled: true,
-        fillColor: isDark ? Colors.grey[800] : Colors.grey[200],
+        fillColor: isDark ? Colors.grey[850] : Colors.grey[200],
         border: OutlineInputBorder(
-          borderRadius:
-          BorderRadius.circular(SizeConfig.getWidth(context, 8)),
+          borderRadius: BorderRadius.circular(SizeConfig.getWidth(context, 8)),
           borderSide: BorderSide.none,
         ),
         contentPadding: EdgeInsets.symmetric(
-          vertical: SizeConfig.getHeight(context, 14),
+          vertical: obscureText
+              ? SizeConfig.getHeight(context, 14)
+              : SizeConfig.getHeight(context, 8),
           horizontal: SizeConfig.getWidth(context, 16),
         ),
       ),

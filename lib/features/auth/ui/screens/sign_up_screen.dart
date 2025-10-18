@@ -135,6 +135,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   hintText: "Enter Password",
                                   obscureText: true,
                                 ),
+                                SizedBox(height: SizeConfig.getHeight(context, 16)),
+
+
+
+                                Text(
+                                  "Location",
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                                SizedBox(height: SizeConfig.getHeight(context, 8)),
+                                const CustomTextField(
+                                  hintText: "Enter Location",
+                                  obscureText: true,
+                                ),
+
+                                SizedBox(height: SizeConfig.getHeight(context, 16)),
+
+
+
+                                Text(
+                                  "Social Link (optional)",
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                                SizedBox(height: SizeConfig.getHeight(context, 8)),
+                                const CustomTextField(
+                                  hintText: "Enter Password",
+                                  obscureText: true,
+                                ),
+
+
                               ],
                             ),
                           ),
@@ -159,16 +188,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             },)),
                         ],
                       ),
-
-
-
-
-
-
-
-
-
-
                     ),
                   ),
                 ),
@@ -176,7 +195,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 CustomDividerOr(),
                 SizedBox(height: SizeConfig.getHeight(context, 32)),
 
-
+                   /// other continue option
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

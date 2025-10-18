@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ri_stream/features/live/ui/screens/live_video_screen.dart';
+import 'package:ri_stream/features/message/ui/screens/message_screen.dart';
+import 'package:ri_stream/features/shorts/ui/screens/shorts_screen.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
-import 'package:ri_stream/features/home/ui/screens/home_screen.dart';
 import 'package:ri_stream/features/notification/ui/screens/notification_screen.dart';
 import 'package:ri_stream/features/post/ui/screens/add_post_screen.dart';
 import 'package:ri_stream/features/profile/ui/screens/profile_screen.dart';
-import 'package:ri_stream/features/search/ui/screens/search_screen.dart';
+
 
 class MainBottomNavScreen extends StatefulWidget {
   const MainBottomNavScreen({super.key});
@@ -19,10 +20,10 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   int _currentIndex = 0; // 0-1 left, 2 middle FAB, 3-4 right
 
   final List<Widget> _screens = [
-    const HomeScreen(),
+    const MessageScreen(),
     const LiveVideoScreen(),
     const AddPostScreen(), // Middle FAB
-    const NotificationScreen(),
+    const ShortVideoScreen(),
     const ProfileScreen(),
   ];
 
@@ -69,13 +70,13 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               // Left 2 items
-              _buildNavItem(Icons.home, "Home", 0, selectedColor, unselectedColor),
-              _buildNavItem(Icons.live_tv, "live", 1, selectedColor, unselectedColor),
+              _buildNavItem(Icons.chat, "Message", 0, selectedColor, unselectedColor),
+              _buildNavItem(Icons.fiber_manual_record, "live", 1, selectedColor, unselectedColor),
 
               SizedBox(width: SizeConfig.getWidth(context, 48)), // Space for FAB
 
               // Right 2 items
-              _buildNavItem(Icons.notifications, "Alerts", 3, selectedColor, unselectedColor),
+              _buildNavItem(Icons.video_collection_outlined, "Shorts", 3, selectedColor, unselectedColor),
               _buildNavItem(Icons.person, "Profile", 4, selectedColor, unselectedColor),
             ],
           ),

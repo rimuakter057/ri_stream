@@ -1,12 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:ri_stream/features/auth/ui/screens/sign_in_screen.dart';
-import 'package:ri_stream/features/main_nav/main_nav_screen.dart';
-import 'package:ri_stream/features/profile/ui/screens/profile_screen.dart';
 import 'package:ri_stream/theme/app_theme.dart';
-import 'features/auth/ui/screens/success_screen.dart';
-import 'features/live/ui/screens/live_video_screen.dart';
-import 'features/profile/ui/screens/about_user_screen.dart';
+
 
 
 
@@ -24,7 +20,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       theme: AppTheme.lightTheme(context),
       darkTheme: AppTheme.darkTheme(context),
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       home: SignInScreen(),
     );
   }

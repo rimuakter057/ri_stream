@@ -78,7 +78,7 @@ class AppTheme {
             SizeConfig.getHeight(context, 52), // ✅ height
           ),
           backgroundColor:Colors.red.shade900 ,
-          foregroundColor: Colors.black,
+          foregroundColor: Colors.white,
           padding: EdgeInsets.symmetric(
             horizontal: SizeConfig.getPadding(context, 20),
             vertical: SizeConfig.getPadding(context, 12),
