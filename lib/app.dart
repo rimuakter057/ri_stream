@@ -5,6 +5,8 @@ import 'package:ri_stream/features/auth/ui/screens/sign_up_screen.dart';
 import 'package:ri_stream/features/main_nav/main_nav_screen.dart';
 import 'package:ri_stream/theme/app_theme.dart';
 
+import 'features/home/ui/screens/home_screens.dart';
+
 
 
 
@@ -22,8 +24,8 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       theme: AppTheme.lightTheme(context),
       darkTheme: AppTheme.darkTheme(context),
-      themeMode: ThemeMode.dark,
-      home: MainBottomNavScreen(),
+      themeMode: ThemeMode.light,
+      home: HomeScreen(),
     );
   }
 }
