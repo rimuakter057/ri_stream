@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ri_stream/features/common_widget/custom_asset_image.dart';
-import 'package:ri_stream/features/common_widget/custom_circle_avatar.dart';
-import 'package:ri_stream/features/common_widget/custom_text_field.dart';
+import 'package:ri_stream/features/common/common_widget/custom_asset_image.dart';
+import 'package:ri_stream/features/common/common_widget/custom_circle_avatar.dart';
+import 'package:ri_stream/features/common/common_widget/custom_text_field.dart';
+
 import 'package:ri_stream/features/notification/ui/screens/notification_screen.dart';
 import 'package:ri_stream/features/search/ui/screens/search_screen.dart';
 import 'package:ri_stream/utils/app_colors.dart';

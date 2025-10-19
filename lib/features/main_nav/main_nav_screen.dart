@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ri_stream/features/live/ui/screens/live_video_screen.dart';
+
 import 'package:ri_stream/features/message/ui/screens/message_screen.dart';
-import 'package:ri_stream/features/shorts/ui/screens/shorts_screen.dart';
-import 'package:ri_stream/utils/app_sizes.dart';
-import 'package:ri_stream/features/notification/ui/screens/notification_screen.dart';
 import 'package:ri_stream/features/post/ui/screens/add_post_screen.dart';
+
+import 'package:ri_stream/features/video/live/ui/screens/live_video_screen.dart';
+import 'package:ri_stream/features/video/shorts/ui/screens/shorts_screen.dart';
+
+import 'package:ri_stream/utils/app_sizes.dart';
+
 import 'package:ri_stream/features/profile/ui/screens/profile_screen.dart';
 
 
@@ -96,25 +99,27 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
         });
       },
       behavior: HitTestBehavior.opaque,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            size: SizeConfig.getFont(context, 28),
-            color: isActive ? selectedColor : unselectedColor,
-          ),
-          SizedBox(height: SizeConfig.getHeight(context, 4)),
-          Text(
-            label,
-            style: GoogleFonts.inter(
-              fontSize: SizeConfig.getFont(context, 12),
-              fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: SizeConfig.getFont(context, 28),
               color: isActive ? selectedColor : unselectedColor,
             ),
-          ),
-        ],
+            SizedBox(height: SizeConfig.getHeight(context, 4)),
+            Text(
+              label,
+              style: GoogleFonts.inter(
+                fontSize: SizeConfig.getFont(context, 12),
+                fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+                color: isActive ? selectedColor : unselectedColor,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

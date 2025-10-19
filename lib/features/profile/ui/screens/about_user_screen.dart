@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ri_stream/features/common_widget/custom_profile_image.dart';
+import 'package:ri_stream/features/common/common_widget/custom_profile_image.dart';
+
 import 'package:ri_stream/features/profile/data/recent_post_card_item.dart';
 import 'package:ri_stream/features/profile/data/saved_section_item.dart';
 import 'package:ri_stream/features/profile/ui/screens/edit_profile_screen.dart';

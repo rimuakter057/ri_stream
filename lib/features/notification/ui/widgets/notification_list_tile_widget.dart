@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:ri_stream/features/common_widget/custom_circle_avatar.dart';
+import 'package:ri_stream/features/common/common_widget/custom_circle_avatar.dart';
+
 import 'package:ri_stream/utils/app_colors.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/utils/assets_path.dart';

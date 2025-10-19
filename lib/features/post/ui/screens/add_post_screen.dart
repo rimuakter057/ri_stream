@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ri_stream/features/common_widget/custom_text_field.dart';
+import 'package:ri_stream/features/common/common_widget/custom_text_field.dart';
 import 'package:ri_stream/features/post/ui/widget/upload_button_widget.dart';
-import 'package:ri_stream/utils/app_colors.dart';
+
 import 'package:ri_stream/utils/app_sizes.dart';
 
 

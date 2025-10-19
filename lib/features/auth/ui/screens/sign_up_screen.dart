@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:ri_stream/features/auth/ui/screens/sign_in_screen.dart';
 import 'package:ri_stream/features/auth/ui/widgets/custom_divider_or.dart';
 import 'package:ri_stream/features/auth/ui/widgets/have_account_text_widget.dart';
-import 'package:ri_stream/features/common_widget/custom_asset_image.dart';
-import 'package:ri_stream/features/common_widget/custom_profile_image.dart';
-import 'package:ri_stream/features/common_widget/custom_text_field.dart';
+import 'package:ri_stream/features/common/common_widget/custom_asset_image.dart';
+import 'package:ri_stream/features/common/common_widget/custom_profile_image.dart';
+import 'package:ri_stream/features/common/common_widget/custom_text_field.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/utils/assets_path.dart';
 
@@ -47,9 +47,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       .bodyMedium!
                       .copyWith(color: Colors.grey),
                 ),
-                SizedBox(height: SizeConfig.getHeight(context, 24)),
+                SizedBox(height: SizeConfig.getHeight(context, 16)),
                 ///text field card
                 Card(
+
                   color: isDark ? Colors.white12 : Colors.red.shade50,
                   elevation: 5,
                   child: SingleChildScrollView(
@@ -63,11 +64,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
-                                "Profile",
-                                style: Theme.of(context).textTheme.bodyMedium,
-                              ),
-                              SizedBox(height: SizeConfig.getHeight(context, 8),),
+
                               CustomProfileImage(),
                               SizedBox(height: SizeConfig.getHeight(context, 16),),
                             ],

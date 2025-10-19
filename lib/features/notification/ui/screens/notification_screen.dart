@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ri_stream/features/common_widget/custom_circle_avatar.dart';
+
 import 'package:ri_stream/features/notification/ui/widgets/notification_list_tile_widget.dart';
 import 'package:ri_stream/utils/app_colors.dart';
 import 'package:ri_stream/utils/app_sizes.dart';

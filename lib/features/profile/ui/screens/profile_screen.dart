@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ri_stream/features/common_widget/circular_icon_widget.dart';
-import 'package:ri_stream/features/common_widget/custom_container.dart';
-import 'package:ri_stream/features/common_widget/custom_profile_image.dart';
+import 'package:ri_stream/features/common/common_widget/circular_icon_widget.dart';
+import 'package:ri_stream/features/common/common_widget/custom_container.dart';
+import 'package:ri_stream/features/common/common_widget/custom_profile_image.dart';
+
 import 'package:ri_stream/features/profile/ui/screens/about_user_screen.dart';
 import 'package:ri_stream/features/profile/ui/widgets/recent_post_card_widget.dart';
 import 'package:ri_stream/features/profile/ui/widgets/stat_column_widgets.dart';
@@ -118,7 +119,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
                 child: CustomContainer(
                   borderRadius: 24,
-                  padding: EdgeInsets.symmetric(horizontal: SizeConfig.getWidth(context, 48),vertical:SizeConfig.getHeight(context, 8) ),
+                  padding: EdgeInsets.symmetric(horizontal: SizeConfig.getWidth(context, 48),vertical:SizeConfig.getHeight(context, 4) ),
                   color: isDark?Colors.white12:Colors.red.shade900,
                   child: Text(
                     "About Me",
