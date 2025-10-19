@@ -10,6 +10,8 @@ import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/utils/assets_path.dart';
 import 'package:badges/badges.dart' as badges;
 
+import 'chat_screen.dart';
+
 class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});
 
@@ -85,53 +87,63 @@ class _MessageScreenState extends State<MessageScreen> {
               ),
 
               /// vertically profile pic
-              ListView.builder(
-                physics:
-                    NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 20,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    leading: CustomCircleAvatar(assetsPath: AssetsPath.logo),
-                    title: Text(
-                      "Rimu Akter $index",
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodyMedium, // Title: w600
-                    ),
-                    subtitle: Text(
-                      maxLines: 1,
-                      "Hey! Are you there?Hey! Are you there?Hey! Are you there?Hey! Are you there?Hey! Are you there?", // Subtitle message preview
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        fontSize: SizeConfig.getFont(context, 12),
-                        fontWeight: FontWeight.w300,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize
-                          .min,
-                      children: [
-                        Text(
-                          "2:45 PM", // message time
-                          style: Theme.of(context).textTheme.bodySmall!
-                              .copyWith(
-                                fontSize: SizeConfig.getFont(context, 10),
-                                fontWeight: FontWeight.w300,
-                                color: AppColors.grey,
-                              ),
-                        ),
-                        SizedBox(width: SizeConfig.getWidth(context, 4)),
-                        Icon(
-                          Icons.check, // delivery status
-                          size: SizeConfig.getFont(context, 14),
-                          color: Colors.blue,
-                        ),
-                      ],
-                    ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const ChatScreen (chatWith: 'Riyad',),
+                    ), // target screen
                   );
                 },
+                child: ListView.builder(
+                  physics:
+                      NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: 20,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      leading: CustomCircleAvatar(assetsPath: AssetsPath.logo),
+                      title: Text(
+                        "Rimu Akter $index",
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodyMedium, // Title: w600
+                      ),
+                      subtitle: Text(
+                        maxLines: 1,
+                        "Hey! Are you there?Hey! Are you there?Hey! Are you there?Hey! Are you there?Hey! Are you there?", // Subtitle message preview
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontSize: SizeConfig.getFont(context, 12),
+                          fontWeight: FontWeight.w300,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize
+                            .min,
+                        children: [
+                          Text(
+                            "2:45 PM", // message time
+                            style: Theme.of(context).textTheme.bodySmall!
+                                .copyWith(
+                                  fontSize: SizeConfig.getFont(context, 10),
+                                  fontWeight: FontWeight.w300,
+                                  color: AppColors.grey,
+                                ),
+                          ),
+                          SizedBox(width: SizeConfig.getWidth(context, 4)),
+                          Icon(
+                            Icons.check, // delivery status
+                            size: SizeConfig.getFont(context, 14),
+                            color: Colors.blue,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           ),
