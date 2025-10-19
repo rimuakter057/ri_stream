@@ -5,7 +5,8 @@ import 'package:device_preview/device_preview.dart';
 import 'app.dart';
 
 
-
+// ❗ Global ValueNotifier
+ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.light);
 void main() {
   runApp(
     DevicePreview(

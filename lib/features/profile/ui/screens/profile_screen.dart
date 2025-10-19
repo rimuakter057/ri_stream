@@ -6,6 +6,7 @@ import 'package:ri_stream/features/common/common_widget/custom_profile_image.dar
 import 'package:ri_stream/features/profile/ui/screens/about_user_screen.dart';
 import 'package:ri_stream/features/profile/ui/widgets/recent_post_card_widget.dart';
 import 'package:ri_stream/features/profile/ui/widgets/stat_column_widgets.dart';
+import 'package:ri_stream/features/setting/ui/screens/settings_screen.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 
 import '../../data/recent_post_card_item.dart' show recentPostcardItem;
@@ -24,10 +25,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
+appBar: AppBar(
+  leading: IconButton(onPressed: (){
+    Navigator.pop(context);
+  }, icon: Icon(Icons.arrow_back_ios)),
 
+  title: Text("Profile"),
+  
+  actions: [
+    IconButton(
+        onPressed: (){
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => SettingsScreen(),
+            ), // target screen
+          );
+        },
+
+        icon: Icon(Icons.settings))
+  ],
+
+),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, top: 64),
+          padding: const EdgeInsets.only(left: 16, right: 16, ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

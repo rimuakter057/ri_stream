@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:ri_stream/features/auth/ui/screens/sign_in_screen.dart';
+import 'package:ri_stream/features/profile/ui/screens/profile_screen.dart';
+import 'package:ri_stream/features/setting/ui/screens/settings_screen.dart';
+import 'package:ri_stream/main.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/theme/app_theme.dart'; // তোমার AppTheme import
 
 class CustomDrawer extends StatelessWidget {
-  final bool isDark;
-  final Function(bool)? onThemeChanged;
 
-  const CustomDrawer({super.key, this.isDark = false, this.onThemeChanged});
+
+
+  const CustomDrawer({super.key, });
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +69,14 @@ class CustomDrawer extends StatelessWidget {
                   icon: Icons.person,
                   label: 'Profile',
                   iconColor: iconColor!,
-                  textColor: textColor!,
+
                   onTap: () {
-                    // Navigate to profile
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfileScreen(),
+                      ),
+                    );
                   },
                 ),
                 _buildDrawerRow(
@@ -75,15 +84,22 @@ class CustomDrawer extends StatelessWidget {
                   icon: Icons.settings,
                   label: 'Settings',
                   iconColor: iconColor,
-                  textColor: textColor,
-                  onTap: () {},
+
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SettingsScreen(),
+                      ),
+                    );
+                  },
                 ),
                 _buildDrawerRow(
                   context,
                   icon: Icons.privacy_tip,
                   label: 'Privacy',
                   iconColor: iconColor,
-                  textColor: textColor,
+
                   onTap: () {},
                 ),
                 _buildDrawerRow(
@@ -91,51 +107,17 @@ class CustomDrawer extends StatelessWidget {
                   icon: Icons.description,
                   label: 'Terms & Conditions',
                   iconColor: iconColor,
-                  textColor: textColor,
+
                   onTap: () {},
                 ),
-                _buildDrawerRow(
-                  context,
-                  icon: Icons.info_outline,
-                  label: 'About',
-                  iconColor: iconColor,
-                  textColor: textColor,
-                  onTap: () {},
-                ),
+
                 _buildDrawerRow(
                   context,
                   icon: Icons.help_outline,
                   label: 'Help',
                   iconColor: iconColor,
-                  textColor: textColor,
-                  onTap: () {},
-                ),
 
-                // Theme switch
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: SizeConfig.getWidth(context, 16),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(Icons.dark_mode, color: iconColor),
-                          SizedBox(width: SizeConfig.getWidth(context, 12)),
-                          Text(
-                            'Dark Theme',
-                            style: theme.textTheme.bodyMedium,
-                          ),
-                        ],
-                      ),
-                      Switch(
-                        value: isDark,
-                        onChanged: onThemeChanged,
-                        activeColor: theme.primaryColor,
-                      ),
-                    ],
-                  ),
+                  onTap: () {},
                 ),
 
                 _buildDrawerRow(
@@ -143,9 +125,14 @@ class CustomDrawer extends StatelessWidget {
                   icon: Icons.logout,
                   label: 'Logout',
                   iconColor: iconColor,
-                  textColor: textColor,
+
                   onTap: () {
-                    // Logout action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignInScreen(),
+                      ),
+                    );
                   },
                 ),
               ],
@@ -160,7 +147,7 @@ class CustomDrawer extends StatelessWidget {
     required IconData icon,
     required String label,
     required Color iconColor,
-    required Color textColor,
+
     VoidCallback? onTap,
   }) {
     final theme = Theme.of(context); // Theme context থেকে নাও
@@ -175,7 +162,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           title: Text(
             label,
-            style: theme.textTheme.bodyMedium, // <-- theme থেকে style
+            style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
           ),
           onTap: onTap,
         ),

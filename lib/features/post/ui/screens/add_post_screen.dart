@@ -29,15 +29,7 @@ class AddPostScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Post Title",
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                  SizedBox(height: SizeConfig.getHeight(context, 8)),
-                  const CustomTextField(
-                    hintText: "Enter Title",
-                  ),
-                  SizedBox(height: SizeConfig.getHeight(context, 16)),
+
                   Text(
                     "Description",
                     style: Theme.of(context).textTheme.bodyMedium,

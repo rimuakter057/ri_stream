@@ -6,6 +6,8 @@ import 'package:ri_stream/features/main_nav/main_nav_screen.dart';
 import 'package:ri_stream/theme/app_theme.dart';
 
 import 'features/home/ui/screens/home_screens.dart';
+import 'main.dart';
+
 
 
 
@@ -17,15 +19,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Responsive Theme Demo',
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
-      theme: AppTheme.lightTheme(context),
-      darkTheme: AppTheme.darkTheme(context),
-      themeMode: ThemeMode.dark,
-      home: MainBottomNavScreen(),
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeNotifier,
+      builder: (_, ThemeMode currentMode, __) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'RiStream',
+          theme: AppTheme.lightTheme(context),
+          darkTheme: AppTheme.darkTheme(context),
+          themeMode: currentMode, // 🔹 এখানে theme toggle হবে
+          home: const SignInScreen(),
+        );
+      },
     );
   }
 }

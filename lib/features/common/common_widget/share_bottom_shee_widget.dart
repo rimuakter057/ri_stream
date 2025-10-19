@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 
 class ShareBottomSheet extends StatelessWidget {
@@ -15,7 +16,7 @@ class ShareBottomSheet extends StatelessWidget {
 
     final shareOptions = [
       {'icon': Icons.facebook, 'label': 'Facebook'},
-      {'icon': Icons.whatshot_outlined, 'label': 'WhatsApp'},
+      {'icon': FontAwesomeIcons.whatsapp,  'label': 'WhatsApp'},
       {'icon': Icons.telegram, 'label': 'Telegram'},
       {'icon': Icons.email, 'label': 'Email'},
       {'icon': Icons.copy, 'label': 'Copy Link'},
