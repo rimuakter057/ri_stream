@@ -26,29 +26,36 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back_ios)),
+          title: Text("Edit Your Profile"),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const
+                    EditProfileScreen()), // target screen
+                  );
+                },
+                icon: Icon(Icons.edit)),
+          ],
+        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
-              top: SizeConfig.getHeight(context, 64),
+
               left: SizeConfig.getWidth(context, 16),
               right: SizeConfig.getWidth(context, 16),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ///sign in header text
-                Text(
-                  "Edit",
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-                Text(
-                  "Edit Your Profile",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(color: Colors.grey),
-                ),
-                SizedBox(height: SizeConfig.getHeight(context, 8)),
+
 
        SingleChildScrollView(
                     child: Padding(

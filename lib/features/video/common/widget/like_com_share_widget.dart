@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ri_stream/features/common/common_widget/share_bottom_shee_widget.dart';
 
 import 'package:ri_stream/utils/app_sizes.dart';
 
@@ -8,12 +9,13 @@ class CommentShareWidget extends StatelessWidget {
   final int views;
   final VoidCallback? onCommentTap;
 
-  const CommentShareWidget({
+
+   const CommentShareWidget({
     super.key,
     required this.likes,
     required this.comments,
-    required this.views,
-    this.onCommentTap,
+    required this.views, this.onCommentTap,
+
   });
 
   @override
@@ -29,7 +31,21 @@ class CommentShareWidget extends StatelessWidget {
         SizedBox(height: SizeConfig.getHeight(context, 10)),
         _buildIconText(Icons.remove_red_eye, views.toString(), color: Colors.white, size: 28),
         SizedBox(height: SizeConfig.getHeight(context, 10)),
-        Icon(Icons.share, color: Colors.white, size: 30),
+        GestureDetector(
+          onTap: () {
+            // Bottom sheet open
+            showModalBottomSheet(
+              context: context,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+              ),
+              builder: (_) => const ShareBottomSheet(), // আলাদা UI ফাইল থেকে import
+            );
+          },
+          child: Icon(Icons.share, color: Colors.white, size: 30),
+        )
+
       ],
     );
   }

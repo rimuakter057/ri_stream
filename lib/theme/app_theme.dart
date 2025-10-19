@@ -134,6 +134,15 @@ class AppTheme {
       primaryColor: Colors.black,
       scaffoldBackgroundColor: Colors.black,
 
+
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: Colors.grey.shade50,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(SizeConfig.getWidth(context, 16)),
+          ),
+        ),
+      ),
       ///appbar
       appBarTheme: AppBarTheme(
         surfaceTintColor: Colors.transparent,
@@ -234,15 +243,6 @@ class AppTheme {
 
 
 
-
-      bottomSheetTheme: BottomSheetThemeData(
-        backgroundColor: Colors.grey.shade50,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(SizeConfig.getWidth(context, 16)),
-          ),
-        ),
-      ),
     );
   }
 }
