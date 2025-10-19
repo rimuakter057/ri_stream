@@ -24,34 +24,7 @@ class _MessageScreenState extends State<MessageScreen> {
       appBar: AppBar(
         leading: CustomAssetImage(assetsPath: AssetsPath.logo),
         title: const Text("RiStream"),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: badges.Badge(
-              position: badges.BadgePosition.topEnd(top: 0, end: 3),
-              showBadge: true,
-              badgeContent: const Text(
-                '3', // unread count
-                style: TextStyle(color: Colors.black, fontSize: 12),
-              ),
-              badgeStyle: badges.BadgeStyle(
-                badgeColor: Colors.red.shade900, // badge color
-                padding: EdgeInsets.all(6),
-              ),
-              child: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const NotificationScreen(),
-                    ), // target screen
-                  );
-                },
-                icon: const Icon(Icons.notifications_outlined, size: 28),
-              ),
-            ),
-          ),
-        ],
+
       ),
 
       ///body section

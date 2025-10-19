@@ -14,7 +14,7 @@ class AppTheme {
       primaryColor: Colors.black,
       scaffoldBackgroundColor: AppColors.white,
 
-      appBarTheme: AppBarTheme(
+      appBarTheme: AppBarTheme(centerTitle: true,
         surfaceTintColor: Colors.transparent,
         backgroundColor: AppColors.white,
         elevation: 2,
@@ -144,7 +144,7 @@ class AppTheme {
         ),
       ),
       ///appbar
-      appBarTheme: AppBarTheme(
+      appBarTheme: AppBarTheme(centerTitle: true,
         surfaceTintColor: Colors.transparent,
         backgroundColor: Colors.black,
         elevation: 2,

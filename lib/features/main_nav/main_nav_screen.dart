@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ri_stream/features/home/ui/screens/home_screens.dart';
 
 import 'package:ri_stream/features/message/ui/screens/message_screen.dart';
 import 'package:ri_stream/features/post/ui/screens/add_post_screen.dart';
@@ -23,11 +24,12 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   int _currentIndex = 0; // 0-1 left, 2 middle FAB, 3-4 right
 
   final List<Widget> _screens = [
+    const HomeScreen(),
     const MessageScreen(),
-    const LiveVideoScreen(),
     const AddPostScreen(), // Middle FAB
+    const LiveVideoScreen(),
     const ShortVideoScreen(),
-    const ProfileScreen(),
+
   ];
 
   @override
@@ -73,14 +75,16 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               // Left 2 items
-              _buildNavItem(Icons.chat, "Message", 0, selectedColor, unselectedColor),
-              _buildNavItem(Icons.fiber_manual_record, "live", 1, selectedColor, unselectedColor),
+              _buildNavItem(Icons.home, "Home", 0, selectedColor, unselectedColor),
+              _buildNavItem(Icons.chat, "Message", 1, selectedColor, unselectedColor),
+
 
               SizedBox(width: SizeConfig.getWidth(context, 48)), // Space for FAB
 
               // Right 2 items
-              _buildNavItem(Icons.video_collection_outlined, "Shorts", 3, selectedColor, unselectedColor),
-              _buildNavItem(Icons.person, "Profile", 4, selectedColor, unselectedColor),
+              _buildNavItem(Icons.fiber_manual_record, "live", 3, selectedColor, unselectedColor),
+              _buildNavItem(Icons.video_collection_outlined, "Shorts", 4, selectedColor, unselectedColor),
+
             ],
           ),
         ),

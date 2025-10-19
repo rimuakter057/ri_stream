@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       theme: AppTheme.lightTheme(context),
       darkTheme: AppTheme.darkTheme(context),
-      themeMode: ThemeMode.light,
-      home: HomeScreen(),
+      themeMode: ThemeMode.dark,
+      home: MainBottomNavScreen(),
     );
   }
 }
