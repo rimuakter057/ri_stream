@@ -12,7 +12,7 @@
 </p>
 ### 🔹 Row 2
 <p float="left">
-  <img src="assets/screenshots/add_post_dark.jpgg" width="200"/>
+  <img src="assets/screenshots/add_post_dark.jpg" width="200"/>
   <img src="assets/screenshots/add_post_light.jpg" width="200"/>
   <img src="assets/screenshots/audio_dark.jpg" width="200"/>
   <img src="assets/screenshots/audio_light.jpg" width="200"/>
