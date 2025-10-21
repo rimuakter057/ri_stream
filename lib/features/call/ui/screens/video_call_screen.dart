@@ -1,128 +1,145 @@
 import 'package:flutter/material.dart';
-import 'package:ri_stream/utils/app_sizes.dart';
 
 class VideoCallScreen extends StatelessWidget {
   final String remoteUserName;
   final String remoteUserImage;
+  final String localUserName;
   final String localUserImage;
 
   const VideoCallScreen({
     super.key,
     required this.remoteUserName,
     required this.remoteUserImage,
+    required this.localUserName,
     required this.localUserImage,
   });
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    const double buttonRadius = 20; // Uniform border radius
+    const double buttonPadding = 16; // Uniform padding
+
     return Scaffold(
-      backgroundColor: Colors.black,
+
       body: SafeArea(
-        child: Stack(
-          children: [
-            // Fullscreen remote user video
-            Positioned.fill(
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(remoteUserImage),
-                    fit: BoxFit.cover,
-                  ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              /// Top half: Remote user
+              Expanded(
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(24),
+                        child: Image.asset(
+                          remoteUserImage,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    // Top overlay: back button + remote name
+                    Positioned(
+                      top: 8,
+                      left: 8,
+                      right: 8,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.black45,
+                            child: IconButton(
+                              icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+                              onPressed: () => Navigator.pop(context),
+                            ),
+                          ),
+                          Text(
+                            remoteUserName,
+                            style: theme.textTheme.headlineSmall?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-
-            // Top overlay: remote user name + back arrow
-            Positioned(
-              top: SizeConfig.getHeight(context, 16),
-              left: SizeConfig.getWidth(context, 8),
-              right: SizeConfig.getWidth(context, 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Back arrow
-                  CircleAvatar(
-                    backgroundColor: Colors.black45,
-                    child: IconButton(
-                      icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-                      onPressed: () => Navigator.pop(context),
+              Divider(color: Colors.black12,thickness: 0.5,),
+              /// Bottom half: Local user
+              Expanded(
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(24),
+                        child: Image.asset(
+                          localUserImage,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
-                  ),
-
-                  // Remote user name
-                  Text(
-                    remoteUserName,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                    // Local user name overlay
+                    Positioned(
+                      top: 8,
+                      left: 8,
+                      child: Text(
+                        localUserName,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-                  ),
+                    /// Bottom controls
+                    Positioned(
+                      bottom: 16,
+                      left: 16,
+                      right: 16,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          // Mute
+                          Container(
+                            decoration: BoxDecoration(
+                              color: theme.colorScheme.secondary.withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(buttonRadius),
+                            ),
+                            padding: const EdgeInsets.all(buttonPadding),
+                            child: const Icon(Icons.mic_off, color: Colors.white, size: 28),
+                          ),
 
-                  SizedBox(width: 40), // placeholder to balance row
-                ],
-              ),
-            ),
+                          // End Call
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.red.shade900,
+                              borderRadius: BorderRadius.circular(buttonRadius),
+                            ),
+                            padding: const EdgeInsets.all(buttonPadding),
+                            child: const Icon(Icons.call_end, color: Colors.white, size: 28),
+                          ),
 
-            // Small self-preview (top-right)
-            Positioned(
-              top: SizeConfig.getHeight(context, 100),
-              right: SizeConfig.getWidth(context, 48),
-              child: Container(
-                width: SizeConfig.getWidth(context, 140),
-                height: SizeConfig.getHeight(context, 180),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.white, width: 2),
-                  image: DecorationImage(
-                    image: AssetImage(localUserImage),
-                    fit: BoxFit.cover,
-                  ),
+                          // Switch Camera
+                          Container(
+                            decoration: BoxDecoration(
+                              color: theme.colorScheme.secondary.withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(buttonRadius),
+                            ),
+                            padding: const EdgeInsets.all(buttonPadding),
+                            child: const Icon(Icons.cameraswitch, color: Colors.white, size: 28),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-
-            // Bottom controls
-            Positioned(
-              bottom: SizeConfig.getHeight(context, 40),
-              left: 0,
-              right: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // Mute mic
-                  CircleAvatar(
-                    radius: SizeConfig.getHeight(context, 28),
-                    backgroundColor: Colors.grey[800],
-                    child: IconButton(
-                      icon: const Icon(Icons.mic_off, color: Colors.white),
-                      onPressed: () {},
-                    ),
-                  ),
-
-                  // End call
-                  CircleAvatar(
-                    radius: SizeConfig.getHeight(context, 28),
-                    backgroundColor: Colors.red.shade900,
-                    child: IconButton(
-                      icon: const Icon(Icons.call_end, color: Colors.white),
-                      onPressed: () => Navigator.pop(context),
-                    ),
-                  ),
-
-                  // Switch camera
-                  CircleAvatar(
-                    radius: SizeConfig.getHeight(context, 28),
-                    backgroundColor: Colors.grey[800],
-                    child: IconButton(
-                      icon: const Icon(Icons.cameraswitch, color: Colors.white),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

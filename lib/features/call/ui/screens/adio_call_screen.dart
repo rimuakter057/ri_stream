@@ -13,31 +13,19 @@ class AudioCallScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Scaffold(
-      backgroundColor: isDark ? Colors.black : Colors.white,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Back arrow (top-left)
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.all(SizeConfig.getHeight(context, 8)),
-                child: CircleAvatar(
-                  backgroundColor: Colors.black45,
-                  child: IconButton(
-                    icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: SizeConfig.getHeight(context, 40)),
-
             // Profile Image
             CircleAvatar(
               radius: SizeConfig.getHeight(context, 60),
@@ -48,10 +36,9 @@ class AudioCallScreen extends StatelessWidget {
             // User Name
             Text(
               userName,
-              style: TextStyle(
-                fontSize: SizeConfig.getHeight(context, 22),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : Colors.black,
+                fontSize: SizeConfig.getHeight(context, 22),
               ),
             ),
             SizedBox(height: SizeConfig.getHeight(context, 8)),
@@ -59,9 +46,8 @@ class AudioCallScreen extends StatelessWidget {
             // Calling Text
             Text(
               "Calling...",
-              style: TextStyle(
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontSize: SizeConfig.getHeight(context, 16),
-                color: isDark ? Colors.white70 : Colors.grey[700],
               ),
             ),
             SizedBox(height: SizeConfig.getHeight(context, 80)),
@@ -73,9 +59,11 @@ class AudioCallScreen extends StatelessWidget {
                 // Mute
                 CircleAvatar(
                   radius: SizeConfig.getHeight(context, 28),
-                  backgroundColor: isDark ? Colors.grey[800] : Colors.grey[300],
+                  backgroundColor: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.grey[800]
+                      : Colors.grey[300],
                   child: IconButton(
-                    icon: Icon(Icons.mic_off, color: isDark ? Colors.white : Colors.black),
+                    icon: const Icon(Icons.mic_off),
                     onPressed: () {},
                   ),
                 ),
@@ -84,7 +72,7 @@ class AudioCallScreen extends StatelessWidget {
                   radius: SizeConfig.getHeight(context, 28),
                   backgroundColor: Colors.red.shade900,
                   child: IconButton(
-                    icon: const Icon(Icons.call_end, color: Colors.white),
+                    icon: const Icon(Icons.call_end,color: Colors.white,),
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -93,9 +81,11 @@ class AudioCallScreen extends StatelessWidget {
                 // Speaker
                 CircleAvatar(
                   radius: SizeConfig.getHeight(context, 28),
-                  backgroundColor: isDark ? Colors.grey[800] : Colors.grey[300],
+                  backgroundColor: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.grey[800]
+                      : Colors.grey[300],
                   child: IconButton(
-                    icon: Icon(Icons.volume_up, color: isDark ? Colors.white : Colors.black),
+                    icon: const Icon(Icons.volume_up),
                     onPressed: () {},
                   ),
                 ),

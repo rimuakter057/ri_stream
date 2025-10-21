@@ -1,5 +1,12 @@
 final List<Map<String, String>> stories = [
   {
+    'name': 'YOU',
+    'profileImage': 'assets/icons/logo.png',
+    'backgroundImage': 'assets/images/image1.png',
+    'time': '2h ago',
+  },
+
+  {
     'name': 'Alice ',
     'profileImage': 'assets/icons/logo.png',
     'backgroundImage': 'assets/images/image1.png',

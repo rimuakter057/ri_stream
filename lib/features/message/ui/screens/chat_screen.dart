@@ -51,7 +51,7 @@ class _ChatScreenState extends State<ChatScreen> {
             // Profile Image
             CircleAvatar(
               radius: SizeConfig.getHeight(context, 20),
-              backgroundImage: AssetImage('assets/images/profile1.jpg'), // replace with dynamic profile
+              backgroundImage: AssetImage('assets/icons/logo.png'), // replace with dynamic profile
             ),
             SizedBox(width: SizeConfig.getWidth(context, 8)),
 
@@ -84,7 +84,7 @@ class _ChatScreenState extends State<ChatScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const VideoCallScreen(remoteUserName: 'P', remoteUserImage: 'Q', localUserImage: 'R',)), // target screen
+                  MaterialPageRoute(builder: (_) => const VideoCallScreen(remoteUserName: 'P', remoteUserImage: 'assets/images/image1.png', localUserImage: 'assets/images/live_back_image1.jpg', localUserName: 'S',)), // target screen
                 );
               },
               icon: Icon(Icons.videocam, color: isDark ? Colors.white : Colors.black),

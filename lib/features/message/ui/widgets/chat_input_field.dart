@@ -23,6 +23,7 @@ class ChatInputField extends StatelessWidget {
           child: CustomTextField(
             controller: controller,
             hintText: "Write a message...",
+            suffixIcon: Icons.mic,
           ),
         ),
         SizedBox(width: SizeConfig.getWidth(context, 8)),

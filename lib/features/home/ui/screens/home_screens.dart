@@ -57,9 +57,46 @@ class HomeScreen extends StatelessWidget {
               height: SizeConfig.getHeight(context, 230),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: stories.length,
+                itemCount: stories.length + 1, // ১টা বেশি — কারণ ১টা 'Add Story' কার্ড যোগ করব
                 itemBuilder: (context, index) {
-                  final story = stories[index];
+                  if (index == 0) {
+                    // 🧩 প্রথম আইটেম = Add Story কার্ড
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: SizeConfig.getWidth(context, 8)),
+                      child: GestureDetector(
+                        onTap: () {
+                          // এখানে add story action দেবে
+                        },
+                        child: Container(
+                          width: SizeConfig.getWidth(context, 120),
+                          height: SizeConfig.getHeight(context, 230),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(SizeConfig.getHeight(context, 12)),
+                            color: Colors.grey.shade800,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                radius: SizeConfig.getHeight(context, 25),
+                                backgroundColor: Colors.grey.shade700,
+                                child: const Icon(Icons.add, color: Colors.white, size: 30),
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 10)),
+                              const Text(
+                                "Add Story",
+                                style: TextStyle(color: Colors.white70, fontSize: 14),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+
+                  // 🧩 বাকিগুলো = তোমার আগের story container (এই অংশটাই `yourExistingStoryCard` ছিল)
+                  final story = stories[index - 1]; // কারণ 0 index এ add story চলে গেছে
+
                   return Padding(
                     padding: EdgeInsets.symmetric(horizontal: SizeConfig.getWidth(context, 8)),
                     child: Container(
@@ -112,7 +149,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                   );
                 },
-              ),
+              )
+
+
             ),
           ),
 

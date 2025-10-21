@@ -6,6 +6,7 @@ import 'package:ri_stream/features/main_nav/main_nav_screen.dart';
 import 'package:ri_stream/theme/app_theme.dart';
 
 import 'features/home/ui/screens/home_screens.dart';
+import 'features/splash/splash_screen.dart';
 import 'main.dart';
 
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme(context),
           darkTheme: AppTheme.darkTheme(context),
           themeMode: currentMode, // 🔹 এখানে theme toggle হবে
-          home: const SignInScreen(),
+          home: const SplashScreen(),
         );
       },
     );
