@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ri_stream/features/auth/ui/screens/sign_in_screen.dart'; // <- ei import ta add korte bhulbana
+import 'package:ri_stream/features/auth/ui/screens/sign_in_screen.dart';
+import 'package:ri_stream/features/splash/data/data_source/firebase_splash_service.dart'; // <- ei import ta add korte bhulbana
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,6 +14,8 @@ class _SplashScreenState extends State<SplashScreen>
   late final AnimationController _ctrl;
   late final Animation<double> _scale;
   late final Animation<double> _fade;
+
+  SplashService splashService= SplashService();
 
   @override
   void initState() {
@@ -32,14 +35,8 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     _ctrl.forward();
+    splashService.isLogin(context);
 
-    // 🔥 ৩ সেকেন্ড পরে SignInScreen-এ যাবে
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const SignInScreen()),
-      );
-    });
   }
 
   @override

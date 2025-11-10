@@ -1,4 +1,5 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ri_stream/features/auth/ui/screens/sign_in_screen.dart';
 import 'package:ri_stream/features/auth/ui/widgets/custom_divider_or.dart';
@@ -8,6 +9,7 @@ import 'package:ri_stream/features/common/common_widget/custom_profile_image.dar
 import 'package:ri_stream/features/common/common_widget/custom_text_field.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 import 'package:ri_stream/utils/assets_path.dart';
+import 'package:ri_stream/utils/toast_message.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -18,6 +20,36 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   bool isChecked = false; // ✅ build-এর বাইরে রাখতে হবে
+  final formKey = GlobalKey<FormState>();
+  final TextEditingController emailController=TextEditingController();
+  final TextEditingController passwordController=TextEditingController();
+
+
+
+  final FirebaseAuth _auth= FirebaseAuth.instance;
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  void signUp (){
+    _auth.createUserWithEmailAndPassword(email: emailController.text.toString(),
+        password: passwordController.text.toString()).then((value){
+          ToastUtils.showSuccessToast("Sign Up Success");
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) =>
+        const SignInScreen()), // target screen
+      );
+    }).onError((error,stackTrace){
+      debugPrint("error===================================== ${error.toString()}");
+      ToastUtils.showErrorToast(error.toString());
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +82,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(height: SizeConfig.getHeight(context, 16)),
                 ///text field card
                 Card(
-
                   color: isDark ? Colors.white12 : Colors.red.shade50,
                   elevation: 5,
                   child: SingleChildScrollView(
@@ -59,120 +90,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child:       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-
                           Center(child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-
                               CustomProfileImage(),
                               SizedBox(height: SizeConfig.getHeight(context, 16),),
                             ],
                           )),
 
                           ///text from field
-                          Form(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Name",
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 8)),
-                                const CustomTextField(
-                                  hintText: "Enter Full Name",
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 16)),
-                                Text(
-                                  "User Name",
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 8)),
-                                const CustomTextField(
-                                  hintText: "Enter User Name",
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 16)),
-                                Text(
-                                  "Email",
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 8)),
-                                const CustomTextField(
-                                  hintText: "Enter Email",
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 16)),
-                                Text(
-                                  "Date of Birth",
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 8)),
-                                const CustomTextField(
-                                  hintText: "Day/Month/Year",
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 16)),
-                                Text(
-                                  "Gender",
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 8)),
-                                const CustomTextField(
-                                  hintText: "Enter Gender",
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 16)),
-
-
-
-                                Text(
-                                  "Password",
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 8)),
-                                const CustomTextField(
-                                  hintText: "Enter Password",
-                                  obscureText: true,
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 16)),
-
-
-
-                                Text(
-                                  "Location",
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 8)),
-                                const CustomTextField(
-                                  hintText: "Enter Location",
-                                  obscureText: true,
-                                ),
-
-                                SizedBox(height: SizeConfig.getHeight(context, 16)),
-
-
-
-                                Text(
-                                  "Social Link (optional)",
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                                SizedBox(height: SizeConfig.getHeight(context, 8)),
-                                const CustomTextField(
-                                  hintText: "Enter Password",
-                                  obscureText: true,
-                                ),
-
-
-                              ],
-                            ),
-                          ),
+                          _buildForm(context),
 
                           SizedBox(height: SizeConfig.getHeight(context, 32)),
-                          Center(child: ElevatedButton(onPressed: (){
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (_) => const SignInScreen()), // target screen
-                            );
+                          Center(child: ElevatedButton(onPressed: ()async{
+                       signUp();
+                          },
 
-                          }, child: Text("Sign Up"))),
+
+
+
+                          child: Text("Sign Up"))),
                           SizedBox(height: SizeConfig.getHeight(context, 8)),
 
                           Center(child: HaveAccountTextWidget(
@@ -215,6 +153,147 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
+
+  Form _buildForm(BuildContext context) {
+    return Form(
+                          key: formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Name",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 8)),
+                              const CustomTextField(
+                                hintText: "Enter Full Name",
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 16)),
+                              Text(
+                                "User Name",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 8)),
+                              const CustomTextField(
+                                hintText: "Enter User Name",
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 16)),
+                              Text(
+                                "Email",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 8)),
+                               CustomTextField(
+                                 controller: emailController,
+                                hintText: "Enter Email",
+                                validator: (value) {
+                                  if (value == null || value.trim().isEmpty) {
+                                    return "Email cannot be empty.";
+                                  }
+                                  final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                                  if (!emailRegex.hasMatch(value)) {
+                                    return "Please enter a valid email address.";
+                                  }
+                                  return null;
+                                },
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 16)),
+                              Text(
+                                "Date of Birth",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 8)),
+                              const CustomTextField(
+                                hintText: "Day/Month/Year",
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 16)),
+                              Text(
+                                "Gender",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 8)),
+                              const CustomTextField(
+                                hintText: "Enter Gender",
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 16)),
+
+
+
+                              Text(
+                                "Password",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 8)),
+                               CustomTextField(
+                                 controller: passwordController,
+                                hintText: "Enter Password",
+                                obscureText: true,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Password is required.';
+                                  }if (value.length < 8) {
+                                    return 'Password must be at least 8 characters long.';
+                                  }if (!RegExp(r'[A-Z]').hasMatch(value)) {
+                                    return 'Must contain at least one uppercase letter.';
+                                  }if (!RegExp(r'[a-z]').hasMatch(value)) {
+                                    return 'Must contain at least one lowercase letter.';
+                                  }if (!RegExp(r'[0-9]').hasMatch(value)) {
+                                    return 'Must contain at least one digit.';
+                                  }return null;
+                                },
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 16)),
+
+
+
+                              Text(
+                                "Location",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 8)),
+                              const CustomTextField(
+                                hintText: "Enter Location",
+                                obscureText: true,
+                              ),
+
+                              SizedBox(height: SizeConfig.getHeight(context, 16)),
+
+
+
+                              Text(
+                                "Social Link (optional)",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                              SizedBox(height: SizeConfig.getHeight(context, 8)),
+                              const CustomTextField(
+                                hintText: "Enter Password",
+                                obscureText: true,
+                              ),
+
+
+                            ],
+                          ),
+                        );
+  }
+
+  void _onPressLogin() async {
+    try {
+      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: "testmmh@yopmail.com",
+        password: "12345678",
+      );
+      print("Credential: --> ${credential.user}");
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+  
 }
 
 

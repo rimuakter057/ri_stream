@@ -142,7 +142,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
             // Input field + send button
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.only(left: 16,right: 16,bottom: 16),
               child: ChatInputField(
                 controller: _controller,
                 onSend: sendMessage,

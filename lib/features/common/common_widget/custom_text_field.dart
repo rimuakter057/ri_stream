@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget {
   final FocusNode? focusNode;
   final int? maxLine;
   final int? minLine; // ✅ added minLine support
-
+  final String? Function(String?)?validator;
   const CustomTextField({
     super.key,
     this.hintText,
@@ -29,14 +29,15 @@ class CustomTextField extends StatelessWidget {
     this.readOnly = false,
     this.focusNode,
     this.maxLine,
-    this.minLine, // optional
+    this.minLine, this.validator, // optional
   });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return TextField(
+    return TextFormField(
+      validator:validator,
       controller: controller,
       onChanged: onChanged,
       keyboardType: keyboardType,

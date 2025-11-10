@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SizeConfig {
-  // স্ক্রিনের width অনুযায়ী scale factor নির্ধারণ
+
   static double scaleFactor(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 

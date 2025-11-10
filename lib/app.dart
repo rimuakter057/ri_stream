@@ -1,11 +1,7 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:ri_stream/features/auth/ui/screens/sign_in_screen.dart';
-import 'package:ri_stream/features/auth/ui/screens/sign_up_screen.dart';
-import 'package:ri_stream/features/main_nav/main_nav_screen.dart';
 import 'package:ri_stream/theme/app_theme.dart';
-
-import 'features/home/ui/screens/home_screens.dart';
+import 'features/practice/database/pages/add_post_page.dart';
+import 'features/practice/database/pages/show_post_screen.dart';
 import 'features/splash/splash_screen.dart';
 import 'main.dart';
 
@@ -29,7 +25,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme(context),
           darkTheme: AppTheme.darkTheme(context),
           themeMode: currentMode, // 🔹 এখানে theme toggle হবে
-          home: const SplashScreen(),
+          home: const ShowPostPage(),
         );
       },
     );

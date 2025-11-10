@@ -1,5 +1,4 @@
-
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ri_stream/features/auth/ui/screens/change_password_screen.dart';
 import 'package:ri_stream/features/auth/ui/screens/sign_in_screen.dart';
@@ -8,10 +7,38 @@ import 'package:ri_stream/features/privacy_policy/ui/screens/privacy_screen.dart
 import 'package:ri_stream/main.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   final bool isDark;
   final Function(bool)? onThemeChanged;
-  const SettingsScreen({super.key, this.isDark = true, this.onThemeChanged});
+
+  const SettingsScreen({
+    super.key,
+    this.isDark = true,
+    this.onThemeChanged,
+  });
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<void> _logout() async {
+    try {
+      await _auth.signOut();
+      // PushReplacement ensures user can't go back to settings after logout
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (_) => const SignInScreen()),
+            (route) => false,
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Logout failed: ${e.toString()}")),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +72,7 @@ class SettingsScreen extends StatelessWidget {
             subtitle: const Text("@username"),
             trailing: Icon(Icons.edit, color: theme.colorScheme.primary),
             onTap: () {
-              // Navigate to Edit Profile
+              // TODO: Navigate to Edit Profile
             },
           ),
           const Divider(height: 32),
@@ -59,30 +86,26 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.lock_outline),
             title: const Text("Change Password"),
-            onTap: (){
+            onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (_) =>ChangePasswordScreen (),
-                ), // target screen
+                MaterialPageRoute(builder: (_) => const ChangePasswordScreen()),
               );
             },
           ),
           ListTile(
             leading: const Icon(Icons.privacy_tip_outlined),
             title: const Text("Privacy"),
-            onTap: (){
+            onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (_) =>PrivacySettingsScreen (),
-                ), // target screen
+                MaterialPageRoute(builder: (_) => const PrivacySettingsScreen()),
               );
             },
           ),
           const Divider(height: 32),
 
-          // Notifications
+          // Notifications Section
           Text(
             "Notifications",
             style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -92,32 +115,30 @@ class SettingsScreen extends StatelessWidget {
             title: const Text("Push Notifications"),
             value: true,
             onChanged: (val) {
-              // Handle toggle
+              // TODO: Handle toggle
             },
           ),
           SwitchListTile(
             title: const Text("In-App Notifications"),
             value: false,
             onChanged: (val) {
-              // Handle toggle
+              // TODO: Handle toggle
             },
           ),
           const Divider(height: 32),
 
           // Theme Switch
-
-
-
           SwitchListTile(
             title: const Text("Dark Mode"),
             value: isDark,
             onChanged: (value) {
               themeNotifier.value = value ? ThemeMode.dark : ThemeMode.light;
+              widget.onThemeChanged?.call(value);
             },
           ),
           const Divider(height: 32),
 
-          // About / Terms
+          // App Info Section
           Text(
             "App Info",
             style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -126,30 +147,26 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.info_outline),
             title: const Text("About"),
-
-              onTap:  () {
-                showAboutDialog(
-                  context: context,
-                  applicationName: 'RiStream',
-                  applicationVersion: '1.0.0',
-                  applicationIcon: Icon(Icons.flutter_dash, size: 50),
-                  children: [
-                    Text('This app is developed by Your Name.'),
-                    Text('Visit https://example.com for more info'),
-                  ],
-                );
-              },
-
+            onTap: () {
+              showAboutDialog(
+                context: context,
+                applicationName: 'RiStream',
+                applicationVersion: '1.0.0',
+                applicationIcon: const Icon(Icons.flutter_dash, size: 50),
+                children: const [
+                  Text('This app is developed by Your Name.'),
+                  Text('Visit https://example.com for more info'),
+                ],
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.policy_outlined),
             title: const Text("Privacy Policy"),
-            onTap: (){
+            onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (_) => PrivacyPolicyScreen(),
-                ), // target screen
+                MaterialPageRoute(builder: (_) => const PrivacyPolicyScreen()),
               );
             },
           ),
@@ -162,14 +179,7 @@ class SettingsScreen extends StatelessWidget {
               "Logout",
               style: TextStyle(color: Colors.red),
             ),
-            onTap: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => SignInScreen(),
-                ), // target screen
-              );
-            },
+            onTap: _logout,
           ),
         ],
       ),

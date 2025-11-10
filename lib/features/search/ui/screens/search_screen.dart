@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ri_stream/features/common/common_widget/custom_text_field.dart';
-
 import 'package:ri_stream/utils/app_colors.dart';
 import 'package:ri_stream/utils/app_sizes.dart';
 
@@ -60,18 +59,7 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
 
 
-
-
-
-
-
-
-
-
-
-
-
-      body: Center(
+ body: Center(
         child: Text(
           "Search results will appear here",
           style: GoogleFonts.inter(
